@@ -453,6 +453,10 @@
       margin-bottom: 12px;
     }
 
+    #painel-stale {
+      grid-column: 1 / -1;
+    }
+
     .kpi-card {
       background-color: var(--bg-surface);
       border: 1px solid var(--border-color);
@@ -1456,6 +1460,9 @@
               </button>
               <button type="button" class="btn-secondary" id="btn-import-trigger">
                 Importar JSON
+              </button>
+              <button type="button" class="btn-secondary" id="btn-open-export-text">
+                Copiar JSON do backup
               </button>
               <input type="file" id="input-import-json" class="sr-only" accept=".json,application/json">
             </div>
@@ -3082,13 +3089,10 @@
                   if (elapsedDays >= STALE_DAYS) {
                     isStale = true;
                     stLabel = "Dominado · revisar (" + ageDays + "d)";
-                    ageAriaSuffix = " (há " + ageDays + "d, revisar)";
                   } else if (ageDays === 0) {
                     stLabel = "Dominado · hoje";
-                    ageAriaSuffix = " (hoje)";
                   } else {
                     stLabel = "Dominado · há " + ageDays + "d";
-                    ageAriaSuffix = " (há " + ageDays + "d)";
                   }
                 }
                 const dotHtml =
@@ -3437,6 +3441,8 @@
         }
       }
 
+      let lastExportJson = "";
+
       function exportBackupJson() {
         const now = new Date();
         const yyyy = now.getFullYear();
@@ -3473,8 +3479,18 @@
           /* fallback modal always shown below */
         }
 
+        lastExportJson = jsonStr;
         showSettingsFeedback("Backup exportado: " + filename);
-        openExportFallback(jsonStr);
+
+        // O download via Blob costuma falhar dentro do app instalado no iOS (standalone).
+        // Só aí o painel de cópia abre sozinho; nos outros ambientes ele fica no botão
+        // "Copiar JSON do backup" para não bloquear a tela com um modal desnecessário.
+        const ua = navigator.userAgent || "";
+        const isIOS = /iPad|iPhone|iPod/.test(ua);
+        const standalone = window.matchMedia && window.matchMedia("(display-mode: standalone)").matches;
+        if (isIOS || standalone) {
+          openExportFallback(jsonStr);
+        }
       }
 
       function handleImportFile(file) {
@@ -3566,8 +3582,13 @@
         const nowMs = Date.now();
         for (let i = 0; i < targetDisc.allItems.length; i++) {
           const itemKey = targetDisc.allItems[i].key;
+          // Só grava a data quando o item realmente muda de estado: item já dominado
+          // mantém a idade original (senão a ação em lote "rejuvenesce" tudo para hoje
+          // e esconde justamente os itens que precisam de revisão).
+          if (state.status[itemKey] !== 2) {
+            state.ts[itemKey] = nowMs;
+          }
           state.status[itemKey] = 2;
-          state.ts[itemKey] = nowMs;
         }
         saveState();
         renderAll();
@@ -3747,6 +3768,16 @@
         if (btnExport) {
           btnExport.addEventListener("click", exportBackupJson);
         }
+        const btnOpenExportText = document.getElementById("btn-open-export-text");
+        if (btnOpenExportText) {
+          btnOpenExportText.addEventListener("click", function () {
+            if (!lastExportJson) {
+              showSettingsFeedback("Exporte primeiro para gerar o JSON do backup.");
+              return;
+            }
+            openExportFallback(lastExportJson);
+          });
+        }
 
         const btnImportTrigger = document.getElementById("btn-import-trigger");
         const inputImport = document.getElementById("input-import-json");
@@ -3918,17 +3949,23 @@
 
       if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", init);
-
-        // PWA: registro do service worker (só em http/https — em file:// não existe)
-        if ("serviceWorker" in navigator && (location.protocol === "https:" || location.protocol === "http:")) {
-          window.addEventListener("load", function () {
-            navigator.serviceWorker.register("sw.js").catch(function () {
-              /* offline opcional: falha no registro não pode quebrar o app */
-            });
-          });
-        }
       } else {
         init();
+      }
+
+      // PWA: registro do service worker (só em http/https; em file:// não existe).
+      // Fora do branch de readyState — se o documento já estiver carregado, registra na hora.
+      if ("serviceWorker" in navigator && (location.protocol === "https:" || location.protocol === "http:")) {
+        const registerSW = function () {
+          navigator.serviceWorker.register("sw.js").catch(function () {
+            /* offline opcional: falha no registro não pode quebrar o app */
+          });
+        };
+        if (document.readyState === "complete") {
+          registerSW();
+        } else {
+          window.addEventListener("load", registerSW);
+        }
       }
     })();
   </script>
