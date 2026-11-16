@@ -1,0 +1,3564 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e" id="meta-theme-color">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FPS 2027.1">
+  <title>Cobertura FPS 2027.1 — Controle de Estudo</title>
+  <style>
+    :root {
+      --bg-page: #f6f5f0;
+      --bg-surface: #ffffff;
+      --bg-subtle: #efede6;
+      --bg-elevated: #faf9f5;
+      --text-main: #1c1917;
+      --text-muted: #57534e;
+      --text-faint: #78716c;
+      --border-color: #d6d3cd;
+      --border-strong: #a8a29e;
+      --accent-teal: #0f766e;
+      --accent-teal-bg: #ccfbf1;
+      --accent-teal-text: #115e59;
+      --accent-teal-border: #5eead4;
+      --accent-amber: #b45309;
+      --accent-amber-bg: #fef3c7;
+      --accent-amber-text: #92400e;
+      --accent-amber-border: #fcd34d;
+      --status-none-bg: #f5f5f4;
+      --status-none-text: #44403c;
+      --status-none-border: #d6d3d1;
+      --star-active: #d97706;
+      --danger: #b91c1c;
+      --danger-bg: #fee2e2;
+      --danger-border: #fca5a5;
+      --mark-bg: #fde68a;
+      --mark-text: #1c1917;
+      --focus-ring: #0f766e;
+      --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.06);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 12px;
+      --transition-fast: 150ms ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html[data-theme="auto"] {
+        --bg-page: #121316;
+        --bg-surface: #1b1d22;
+        --bg-subtle: #252830;
+        --bg-elevated: #20232a;
+        --text-main: #f3f4f6;
+        --text-muted: #9ca3af;
+        --text-faint: #6b7280;
+        --border-color: #2e323b;
+        --border-strong: #4b5563;
+        --accent-teal: #14b8a6;
+        --accent-teal-bg: #0f292a;
+        --accent-teal-text: #5eead4;
+        --accent-teal-border: #115e59;
+        --accent-amber: #f59e0b;
+        --accent-amber-bg: #2e2111;
+        --accent-amber-text: #fcd34d;
+        --accent-amber-border: #78350f;
+        --status-none-bg: #252830;
+        --status-none-text: #d1d5db;
+        --status-none-border: #374151;
+        --star-active: #fbbf24;
+        --danger: #f87171;
+        --danger-bg: #2c1517;
+        --danger-border: #7f1d1d;
+        --mark-bg: #78350f;
+        --mark-text: #fef3c7;
+        --focus-ring: #2dd4bf;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    html[data-theme="dark"] {
+      --bg-page: #121316;
+      --bg-surface: #1b1d22;
+      --bg-subtle: #252830;
+      --bg-elevated: #20232a;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-faint: #6b7280;
+      --border-color: #2e323b;
+      --border-strong: #4b5563;
+      --accent-teal: #14b8a6;
+      --accent-teal-bg: #0f292a;
+      --accent-teal-text: #5eead4;
+      --accent-teal-border: #115e59;
+      --accent-amber: #f59e0b;
+      --accent-amber-bg: #2e2111;
+      --accent-amber-text: #fcd34d;
+      --accent-amber-border: #78350f;
+      --status-none-bg: #252830;
+      --status-none-text: #d1d5db;
+      --status-none-border: #374151;
+      --star-active: #fbbf24;
+      --danger: #f87171;
+      --danger-bg: #2c1517;
+      --danger-border: #7f1d1d;
+      --mark-bg: #78350f;
+      --mark-text: #fef3c7;
+      --focus-ring: #2dd4bf;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.45;
+      overflow-x: hidden;
+      min-height: 100%;
+    }
+
+    button, input, select {
+      font: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Storage warning banner */
+    .storage-warning {
+      background-color: var(--accent-amber-bg);
+      color: var(--accent-amber-text);
+      border-bottom: 1px solid var(--accent-amber-border);
+      padding: 8px max(12px, env(safe-area-inset-left)) 8px max(12px, env(safe-area-inset-right));
+      font-size: 0.8125rem;
+      text-align: center;
+      display: none;
+    }
+    .storage-warning.visible {
+      display: block;
+    }
+
+    /* Sticky Top Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      padding-top: env(safe-area-inset-top);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .header-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .brand-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      background-color: var(--accent-teal-bg);
+      color: var(--accent-teal-text);
+      border: 1px solid var(--accent-teal-border);
+      white-space: nowrap;
+    }
+
+    .theme-btn {
+      min-height: 40px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-subtle);
+      color: var(--text-main);
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .theme-btn:active {
+      background-color: var(--border-color);
+    }
+
+    /* Group Selector */
+    .group-switcher {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      background-color: var(--bg-subtle);
+      padding: 3px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .group-btn {
+      min-height: 44px;
+      padding: 6px 8px;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-align: center;
+      color: var(--text-muted);
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .group-btn[aria-pressed="true"] {
+      background-color: var(--bg-surface);
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Always-visible coverage bar in header */
+    .top-coverage-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .top-coverage-stats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .top-coverage-stats strong {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .top-coverage-pills {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .stat-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 3px;
+      vertical-align: middle;
+    }
+    .stat-dot.dom { background-color: var(--accent-teal); }
+    .stat-dot.est { background-color: var(--accent-amber); }
+
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      background-color: var(--bg-subtle);
+      border-radius: 999px;
+      overflow: hidden;
+      display: flex;
+      border: 1px solid var(--border-color);
+    }
+
+    .progress-fill-dom {
+      height: 100%;
+      background-color: var(--accent-teal);
+      transition: width var(--transition-fast);
+    }
+
+    .progress-fill-est {
+      height: 100%;
+      background-color: var(--accent-amber);
+      transition: width var(--transition-fast);
+    }
+
+    /* Main Content Container */
+    .app-main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 12px 12px calc(78px + env(safe-area-inset-bottom)) 12px;
+      padding-left: max(12px, env(safe-area-inset-left));
+      padding-right: max(12px, env(safe-area-inset-right));
+    }
+
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* Cards & Sections */
+    .card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    /* Countdown & Group Summary Card */
+    .exam-banner {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .exam-header-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .countdown-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      background-color: var(--accent-teal-bg);
+      color: var(--accent-teal-text);
+      border: 1px solid var(--accent-teal-border);
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .exam-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px;
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      font-size: 0.8125rem;
+    }
+
+    .exam-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .exam-meta-label {
+      color: var(--text-muted);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-weight: 600;
+    }
+
+    .exam-meta-value {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* KPI Metrics Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .kpi-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 12px 14px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .kpi-card-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text-muted);
+    }
+
+    .kpi-dual-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .kpi-metric-box {
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-elevated);
+    }
+
+    .kpi-metric-box.dom {
+      background-color: var(--accent-teal-bg);
+      border-color: var(--accent-teal-border);
+      color: var(--accent-teal-text);
+    }
+
+    .kpi-metric-box.est {
+      background-color: var(--accent-amber-bg);
+      border-color: var(--accent-amber-border);
+      color: var(--accent-amber-text);
+    }
+
+    .kpi-big-number {
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .kpi-sub-caption {
+      font-size: 0.75rem;
+      margin-top: 2px;
+      opacity: 0.92;
+    }
+
+    .kpi-note {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin: 2px 0 0 0;
+    }
+
+    /* Area Cards */
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+    }
+
+    .area-card {
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .area-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .area-sigla-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border-strong);
+      color: var(--text-main);
+      margin-bottom: 3px;
+    }
+
+    .area-card-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .area-questoes-tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      white-space: nowrap;
+      color: var(--text-muted);
+    }
+
+    .area-card-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .area-card-stats strong {
+      color: var(--text-main);
+      font-size: 0.92rem;
+    }
+
+    .area-jump-btn {
+      min-height: 36px;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-teal);
+      text-align: center;
+      margin-top: auto;
+      transition: background-color var(--transition-fast);
+    }
+
+    .area-jump-btn:active {
+      background-color: var(--bg-subtle);
+    }
+
+    /* Mandatory Readings Block */
+    .readings-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .readings-count-pill {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background-color: var(--accent-teal-bg);
+      color: var(--accent-teal-text);
+      border: 1px solid var(--accent-teal-border);
+    }
+
+    .readings-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 12px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .reading-mini-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      font-size: 0.8125rem;
+    }
+
+    .reading-mini-title {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .btn-primary-action {
+      min-height: 44px;
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      background-color: var(--accent-teal);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: opacity var(--transition-fast);
+    }
+
+    .btn-primary-action:active {
+      opacity: 0.88;
+    }
+
+    /* Collapsible Settings / Backup inside Painel */
+    .settings-accordion-btn {
+      width: 100%;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .settings-body {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .settings-body.open {
+      display: flex;
+    }
+
+    .settings-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .settings-group-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin: 0;
+    }
+
+    .settings-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn-secondary {
+      min-height: 44px;
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      color: var(--text-main);
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-danger {
+      min-height: 44px;
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      background-color: var(--danger-bg);
+      border: 1px solid var(--danger-border);
+      color: var(--danger);
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .discipline-bulk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 6px;
+    }
+
+    .btn-disc-bulk {
+      min-height: 42px;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .btn-disc-bulk span.disc-action-tag {
+      color: var(--accent-teal);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .feedback-msg {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      background-color: var(--accent-teal-bg);
+      color: var(--accent-teal-text);
+      border: 1px solid var(--accent-teal-border);
+      display: none;
+    }
+    .feedback-msg.visible {
+      display: block;
+    }
+
+    /* CONTEÚDO VIEW — Sticky Search & Filters */
+    .conteudo-sticky-controls {
+      position: sticky;
+      top: var(--header-offset, 108px);
+      z-index: 80;
+      background-color: var(--bg-page);
+      padding: 6px 0 8px 0;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 10px;
+    }
+
+    .search-box-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .search-input {
+      width: 100%;
+      min-height: 44px;
+      padding: 8px 76px 8px 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      background-color: var(--bg-surface);
+      color: var(--text-main);
+      font-size: 0.9rem;
+    }
+
+    .search-clear-btn {
+      position: absolute;
+      right: 6px;
+      min-height: 34px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: none;
+    }
+
+    .search-clear-btn.visible {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .chips-scroll {
+      display: flex;
+      gap: 9px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-chip {
+      min-height: 40px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .filter-chip[aria-pressed="true"] {
+      background-color: var(--accent-teal);
+      border-color: var(--accent-teal);
+      color: #ffffff;
+    }
+
+    .chip-count {
+      font-size: 0.72rem;
+      padding: 1px 5px;
+      border-radius: 999px;
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+
+    .filter-chip[aria-pressed="true"] .chip-count {
+      background-color: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+    }
+
+    .toolbar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .expand-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-mini-tool {
+      min-height: 40px;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Hierarchical Accordions */
+    .acc-area {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      margin-bottom: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .acc-header-btn {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid transparent;
+      transition: background-color var(--transition-fast);
+    }
+
+    .acc-header-btn[aria-expanded="true"] {
+      border-bottom-color: var(--border-color);
+    }
+
+    .acc-area > .acc-header-btn {
+      background-color: var(--bg-elevated);
+    }
+
+    .acc-title-wrap {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .acc-title-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .acc-title-text {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text-main);
+    }
+
+    .acc-disc > .acc-header-btn .acc-title-text {
+      font-size: 0.87rem;
+    }
+
+    .acc-tema > .acc-header-btn .acc-title-text {
+      font-size: 0.83rem;
+      font-weight: 600;
+    }
+
+    .acc-right-meta {
+      display: flex;
+       flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .acc-count-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .chevron-icon {
+      display: inline-block;
+      font-size: 0.75rem;
+      transition: transform var(--transition-fast);
+      color: var(--text-muted);
+    }
+
+    .acc-header-btn[aria-expanded="true"] .chevron-icon {
+      transform: rotate(90deg);
+    }
+
+    .micro-bar {
+      width: 64px;
+      height: 5px;
+      background-color: var(--bg-subtle);
+      border-radius: 999px;
+      overflow: hidden;
+      display: flex;
+      border: 1px solid var(--border-color);
+    }
+
+    .acc-body {
+      display: none;
+    }
+
+    .acc-body.open {
+      display: block;
+    }
+
+    .acc-disc {
+      border-top: 1px solid var(--border-color);
+    }
+
+    .acc-disc:first-child {
+      border-top: none;
+    }
+
+    .acc-disc > .acc-header-btn {
+      padding-left: 16px;
+      background-color: var(--bg-surface);
+    }
+
+    .acc-tema {
+      border-top: 1px solid var(--border-color);
+    }
+
+    .acc-tema > .acc-header-btn {
+      padding-left: 22px;
+      background-color: var(--bg-elevated);
+      min-height: 44px;
+    }
+
+    /* Checklist Items */
+    .items-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-surface);
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: stretch;
+      border-top: 1px solid var(--border-color);
+      min-height: 48px;
+    }
+
+    .item-status-btn {
+      flex: 1;
+      min-width: 0;
+      min-height: 48px;
+      padding: 8px 10px 8px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      transition: background-color var(--transition-fast);
+    }
+
+    .item-status-btn:active {
+      background-color: var(--bg-subtle);
+    }
+
+    .item-text {
+      flex: 1;
+      min-width: 0;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      word-break: break-word;
+    }
+
+    .checklist-item[data-status="2"] .item-text {
+      color: var(--text-muted);
+    }
+
+    .status-badge {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 0.73rem;
+      font-weight: 700;
+      white-space: nowrap;
+      border: 1px solid var(--status-none-border);
+      background-color: var(--status-none-bg);
+      color: var(--status-none-text);
+    }
+
+    .checklist-item[data-status="1"] .status-badge {
+      background-color: var(--accent-amber-bg);
+      color: var(--accent-amber-text);
+      border-color: var(--accent-amber-border);
+    }
+
+    .checklist-item[data-status="2"] .status-badge {
+      background-color: var(--accent-teal-bg);
+      color: var(--accent-teal-text);
+      border-color: var(--accent-teal-border);
+    }
+
+    .star-btn {
+      width: 46px;
+      min-height: 48px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid var(--border-color);
+      font-size: 1.15rem;
+      color: var(--text-faint);
+      transition: color var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .star-btn[aria-pressed="true"] {
+      color: var(--star-active);
+      background-color: var(--bg-elevated);
+    }
+
+    mark.search-highlight {
+      background-color: var(--mark-bg);
+      color: var(--mark-text);
+      padding: 0 2px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 28px 16px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    /* Footer */
+    .app-footer {
+      margin-top: 20px;
+      padding: 14px 10px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* Fixed Bottom Navigation Bar */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      padding-bottom: env(safe-area-inset-bottom);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+      box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    .bottom-nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 6px 12px;
+    }
+
+    .nav-tab-btn {
+      min-height: 46px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .nav-tab-btn[aria-pressed="true"] {
+      background-color: var(--accent-teal-bg);
+      color: var(--accent-teal-text);
+      border-color: var(--accent-teal-border);
+    }
+
+    @media (max-width: 380px) {
+      .kpi-dual-row {
+        grid-template-columns: 1fr;
+      }
+      .item-status-btn {
+        padding-left: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .acc-disc > .acc-header-btn {
+        padding-left: 12px;
+      }
+      .acc-tema > .acc-header-btn {
+        padding-left: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="storage-warning" class="storage-warning" role="status" aria-live="polite">
+    Aviso: o armazenamento local (localStorage) está indisponível neste navegador/modo privado. Suas alterações valerão apenas durante esta sessão; use Exportar JSON para salvar.
+  </div>
+
+  <header class="app-header" id="app-header">
+    <div class="header-inner">
+      <div class="header-top-row">
+        <h1 class="brand-title">
+          <span>Cobertura FPS 2027.1</span>
+          <span class="brand-badge" id="header-group-badge">G2</span>
+        </h1>
+        <button type="button" class="theme-btn" id="theme-toggle-btn" aria-label="Alternar tema de cores">
+          <span id="theme-toggle-label">Tema: Auto</span>
+        </button>
+      </div>
+
+      <div class="group-switcher" role="group" aria-label="Seletor de grupo do vestibular">
+        <button type="button" class="group-btn" id="btn-group-g1" data-group="g1" aria-pressed="false">
+          Grupo 1 (7 cursos)
+        </button>
+        <button type="button" class="group-btn" id="btn-group-g2" data-group="g2" aria-pressed="true">
+          Grupo 2 – Medicina
+        </button>
+      </div>
+
+      <div class="top-coverage-bar" aria-live="polite">
+        <div class="top-coverage-stats">
+          <div class="top-coverage-pills">
+            <span><span class="stat-dot dom"></span>Dominado: <strong id="top-pct-dom">0%</strong> (<span id="top-cnt-dom">0/0</span>)</span>
+            <span><span class="stat-dot est"></span>Estudado: <strong id="top-pct-est">0%</strong></span>
+          </div>
+          <span>Pond.: <strong id="top-pct-pond">0%</strong></span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="Progresso de cobertura do grupo ativo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="top-progressbar">
+          <div class="progress-fill-dom" id="top-bar-dom" style="width: 0%"></div>
+          <div class="progress-fill-est" id="top-bar-est" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <!-- ABA 1: PAINEL -->
+    <section id="view-painel" class="tab-panel active" aria-labelledby="nav-btn-painel">
+      <!-- Contagem regressiva e informações da prova -->
+      <div class="card exam-banner">
+        <div class="exam-header-row">
+          <div>
+            <h2 class="section-title" id="painel-group-title" style="margin-bottom: 2px;">Grupo 2 (Medicina)</h2>
+            <p class="kpi-note" id="painel-group-cursos">Cursos: Medicina</p>
+          </div>
+          <div class="countdown-pill" id="painel-countdown">Calculando...</div>
+        </div>
+
+        <div class="exam-meta-grid">
+          <div class="exam-meta-item">
+            <span class="exam-meta-label">Data(s) de Prova</span>
+            <span class="exam-meta-value" id="painel-exam-dates">—</span>
+          </div>
+          <div class="exam-meta-item">
+            <span class="exam-meta-label">Horário</span>
+            <span class="exam-meta-value" id="painel-exam-hours">—</span>
+          </div>
+          <div class="exam-meta-item">
+            <span class="exam-meta-label">Total da Prova</span>
+            <span class="exam-meta-value" id="painel-exam-questions">—</span>
+          </div>
+          <div class="exam-meta-item">
+            <span class="exam-meta-label">Ritmo Sugerido</span>
+            <span class="exam-meta-value" id="painel-pace">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cobertura Simples e Ponderada -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-card-label">Cobertura Simples (Itens do Grupo)</span>
+          <div class="kpi-dual-row">
+            <div class="kpi-metric-box est">
+              <div class="kpi-big-number" id="kpi-simple-est-pct">0,0%</div>
+              <div class="kpi-sub-caption">% estudado (<span id="kpi-simple-est-cnt">0/0</span>)</div>
+            </div>
+            <div class="kpi-metric-box dom">
+              <div class="kpi-big-number" id="kpi-simple-dom-pct">0,0%</div>
+              <div class="kpi-sub-caption">% dominado (<span id="kpi-simple-dom-cnt">0/0</span>)</div>
+            </div>
+          </div>
+          <p class="kpi-note">Estudado = status Estudando ou Dominado · Dominado = status Dominado.</p>
+        </div>
+
+        <div class="kpi-card">
+          <span class="kpi-card-label">Cobertura Ponderada</span>
+          <div class="kpi-metric-box dom" style="margin-top: 2px;">
+            <div class="kpi-big-number" id="kpi-weighted-pct">0,0%</div>
+            <div class="kpi-sub-caption" id="kpi-weighted-detail">Σ(peso × status/2) ÷ Σ(peso)</div>
+          </div>
+          <p class="kpi-note"><strong>Pondera pelo nº de questões de cada área</strong> no grupo ativo (Estudando = 50% do peso; Dominado = 100%).</p>
+        </div>
+      </div>
+
+      <!-- Cards por Área -->
+      <div class="card">
+        <h2 class="section-title">
+          <span>Desempenho por Área</span>
+          <span class="kpi-note" id="painel-areas-summary"></span>
+        </h2>
+        <div class="areas-grid" id="painel-areas-grid"></div>
+      </div>
+
+      <!-- Bloco Leituras Obrigatórias -->
+      <div class="card">
+        <div class="readings-header">
+          <h2 class="section-title" style="margin: 0;">Leituras Obrigatórias</h2>
+          <span class="readings-count-pill" id="readings-summary-pill">0/7 concluídas</span>
+        </div>
+        <p class="kpi-note" style="margin-bottom: 8px;">Obras literárias indicadas no programa de Língua Portuguesa e Literatura.</p>
+        <ul class="readings-list" id="painel-readings-list"></ul>
+        <button type="button" class="btn-primary-action" id="btn-filter-readings">
+          Filtrar Leituras Obrigatórias na tela Conteúdo
+        </button>
+      </div>
+
+      <!-- Seção recolhível: Ajustes e Backup -->
+      <div class="card">
+        <button type="button" class="settings-accordion-btn" id="btn-toggle-settings" aria-expanded="false" aria-controls="settings-panel-body">
+          <span>Ajustes, Ações em Lote e Backup (JSON)</span>
+          <span class="chevron-icon" aria-hidden="true">▶</span>
+        </button>
+        <div id="settings-panel-body" class="settings-body">
+          <div id="settings-feedback" class="feedback-msg" role="status" aria-live="polite"></div>
+
+          <div class="settings-group">
+            <h3 class="settings-group-title">Backup de Dados (Exportar / Importar)</h3>
+            <p class="kpi-note">Salve seu progresso em arquivo JSON ou restaure um backup anterior.</p>
+            <div class="settings-btn-row">
+              <button type="button" class="btn-secondary" id="btn-export-json">
+                Exportar JSON
+              </button>
+              <button type="button" class="btn-secondary" id="btn-import-trigger">
+                Importar JSON
+              </button>
+              <input type="file" id="input-import-json" class="sr-only" accept=".json,application/json">
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h3 class="settings-group-title">Marcar tudo da disciplina como dominado</h3>
+            <p class="kpi-note">Toque em uma disciplina para marcar todos os seus itens visíveis no grupo ativo como Dominado.</p>
+            <div class="discipline-bulk-grid" id="settings-disc-grid"></div>
+          </div>
+
+          <div class="settings-group">
+            <h3 class="settings-group-title">Zona de Perigo</h3>
+            <div class="settings-btn-row">
+              <button type="button" class="btn-danger" id="btn-reset-all">
+                Zerar todo o progresso
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA 2: CONTEÚDO -->
+    <section id="view-conteudo" class="tab-panel" aria-labelledby="nav-btn-conteudo">
+      <div class="conteudo-sticky-controls" id="conteudo-sticky-bar">
+        <div class="search-box-wrap">
+          <label for="search-input" class="sr-only">Buscar itens do conteúdo programático</label>
+          <input type="search" id="search-input" class="search-input" placeholder="Buscar item, tema ou autor" autocomplete="off">
+          <button type="button" id="search-clear-btn" class="search-clear-btn" aria-label="Limpar busca">Limpar</button>
+        </div>
+
+        <div class="chips-scroll" role="group" aria-label="Filtros de itens">
+          <button type="button" class="filter-chip" data-filter="todos" aria-pressed="true">
+            <span>Todos</span> <span class="chip-count" id="chip-cnt-todos">0</span>
+          </button>
+          <button type="button" class="filter-chip" data-filter="nao_iniciados" aria-pressed="false">
+            <span>Não iniciados</span> <span class="chip-count" id="chip-cnt-nao_iniciados">0</span>
+          </button>
+          <button type="button" class="filter-chip" data-filter="estudando" aria-pressed="false">
+            <span>Estudando</span> <span class="chip-count" id="chip-cnt-estudando">0</span>
+          </button>
+          <button type="button" class="filter-chip" data-filter="dominados" aria-pressed="false">
+            <span>Dominados</span> <span class="chip-count" id="chip-cnt-dominados">0</span>
+          </button>
+          <button type="button" class="filter-chip" data-filter="revisar" aria-pressed="false">
+            <span>★ Revisar</span> <span class="chip-count" id="chip-cnt-revisar">0</span>
+          </button>
+          <button type="button" class="filter-chip" data-filter="leituras" aria-pressed="false">
+            <span>Leituras obrigatórias</span> <span class="chip-count" id="chip-cnt-leituras">0</span>
+          </button>
+        </div>
+
+        <div class="toolbar-row">
+          <span id="search-results-count" aria-live="polite">0 itens exibidos</span>
+          <div class="expand-actions">
+            <button type="button" class="btn-mini-tool" id="btn-expand-all">Expandir tudo</button>
+            <button type="button" class="btn-mini-tool" id="btn-collapse-all">Recolher tudo</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="checklist-container"></div>
+    </section>
+
+    <footer class="app-footer">
+      <div>Fonte: Edital nº 077/2026 — Anexo 6 (FPS). App de acompanhamento pessoal; não substitui o edital.</div>
+      <div>Dados gerados em: <span id="footer-gerado-em">—</span></div>
+    </footer>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navegação principal">
+    <div class="bottom-nav-inner">
+      <button type="button" class="nav-tab-btn" id="nav-btn-painel" data-tab="painel" aria-pressed="true">
+        <span>Painel</span>
+      </button>
+      <button type="button" class="nav-tab-btn" id="nav-btn-conteudo" data-tab="conteudo" aria-pressed="false">
+        <span>Conteúdo</span>
+        <span class="brand-badge" id="nav-badge-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const DATA = {
+  "meta": {
+    "titulo": "Cobertura do Conteúdo Programático — Vestibular FPS 2027.1",
+    "fonte": "Edital nº 077/2026 (05/10/2026) — Anexo 6: Programas dos Componentes Disciplinares",
+    "instituicao": "Faculdade Pernambucana de Saúde (FPS)",
+    "gerado_em": "2026-11-16"
+  },
+  "grupos": {
+    "g1": {
+      "nome": "Grupo 1",
+      "cursos": ["Educação Física", "Enfermagem", "Farmácia", "Fisioterapia", "Nutrição", "Odontologia", "Psicologia"],
+      "datas": ["06/12/2026"],
+      "horario": "15h15 às 19h15",
+      "prova_iso": "2026-12-06T15:15:00-03:00",
+      "areas": ["LI", "CN", "MT"]
+    },
+    "g2": {
+      "nome": "Grupo 2 (Medicina)",
+      "cursos": ["Medicina"],
+      "datas": ["05/12/2026", "06/12/2026"],
+      "horario": "15h15 às 19h15",
+      "prova_iso": "2026-12-05T15:15:00-03:00",
+      "areas": ["MT", "LI", "CH", "CN"]
+    }
+  },
+  "areas": [
+    {
+      "id": "LI",
+      "nome": "Linguagens e suas Tecnologias",
+      "sigla": "LI",
+      "questoes": {"g1": 20, "g2": 22},
+      "disciplinas": [
+        {
+          "id": "li-pt",
+          "nome": "Produção Textual (Redação)",
+          "temas": [
+            {
+              "id": "li-pt-1",
+              "nome": "Gênero textual proposto (BNCC)",
+              "itens": [
+                "Produção de texto em gênero dos campos de atuação social da BNCC",
+                "Contextualização das práticas de linguagem na Educação Básica"
+              ]
+            },
+            {
+              "id": "li-pt-2",
+              "nome": "Questão discursiva (QD) — exclusiva Grupo 2",
+              "grupo": "g2",
+              "itens": ["Questão discursiva da área de Produção Textual (Grupo 2)"]
+            }
+          ]
+        },
+        {
+          "id": "li-lp",
+          "nome": "Língua Portuguesa e Literatura",
+          "temas": [
+            {
+              "id": "li-lp-1",
+              "nome": "1. Textos públicos: a cidadania na esfera pública",
+              "itens": [
+                "Propósito comunicativo e público-alvo",
+                "Síntese do conteúdo global do texto",
+                "Estratégias argumentativas e inferências",
+                "Leitura crítica de discursos políticos, manifestos e leis",
+                "Intertextualidade com documentos históricos",
+                "Modalizações discursivas: juízo de valor e persuasão",
+                "Estratégias de coesão e coerência textuais",
+                "Funções da linguagem e implicações pragmáticas",
+                "Metáforas e ironias em textos públicos",
+                "Estratégias de (im)polidez e preservação de face"
+              ]
+            },
+            {
+              "id": "li-lp-2",
+              "nome": "2. Textos jornalísticos e publicitários",
+              "itens": [
+                "Manchetes e títulos: impactos e efeitos de sentido",
+                "Sentido global de textos jornalísticos e palavras-chave",
+                "Marcas de fake news e manipulação informativa",
+                "Recursos persuasivos em anúncios e reportagens",
+                "Questões éticas no jornalismo e na publicidade",
+                "Gêneros híbridos: texto verbal × visual em anúncios",
+                "Recursos gráficos e multimodais na construção dos sentidos",
+                "Sequências expositivas e argumentativas",
+                "Linguagem sensacionalista e seus efeitos discursivos"
+              ]
+            },
+            {
+              "id": "li-lp-3",
+              "nome": "3. Textos científicos e informativos",
+              "itens": [
+                "Tabelas, gráficos e esquemas em textos científicos",
+                "Abstracts, fichamentos, resumos e resenhas: estrutura e função social",
+                "Divulgação científica: estratégias de simplificação de conceitos",
+                "Ética na ciência e marcas de autoria",
+                "Vocabulário técnico e formação de palavras",
+                "Estrutura expositiva: definição, exemplificação e comparação",
+                "Marcas linguísticas do discurso científico (objetividade)",
+                "Estrutura dos enunciados em textos científicos"
+              ]
+            },
+            {
+              "id": "li-lp-4",
+              "nome": "4. Textos literários: ficção, realidade e humanização",
+              "itens": [
+                "Temas transversais: saúde mental, exclusão social, ética no cuidado",
+                "Representações da ética, fragilidade e resiliência humana",
+                "Relevância sociocultural do texto literário",
+                "Estratégias de leitura do texto literário",
+                "Comparação entre autores, lugares e períodos distintos",
+                "Intertextualidade: literatura e outras áreas do saber",
+                "Variação linguística em personagens e cenários",
+                "Figuras de linguagem: dor, sofrimento, amor e loucura",
+                "Narradores e expressão de pontos de vista",
+                "Marcas de tempo e espaço na narrativa",
+                "Texto dramático: estrutura e construção das ideias",
+                "Estrutura dos poemas e construção das ideias",
+                "Texto literário original × versões em quadrinhos"
+              ]
+            },
+            {
+              "id": "li-lp-5",
+              "nome": "5. Século XXI — a contemporaneidade",
+              "itens": [
+                "Temáticas: meio ambiente; minorias e direitos humanos; ciência, tecnologia e humanidade; biopolítica e saúde pública; corpo, estética e saúde",
+                "Autores: Itamar Vieira Junior, Conceição Evaristo, Jarid Arraes, Chico Buarque, Manoel de Barros, Raimundo Carreiro, Miró da Muribeca, Cícero Belmar, Eliana Alves Cruz, Gilvan Lemos, Cida Pedrosa, Marcelino Freire, Mia Couto, Ailton Krenak, Graça Graúna, Ondjaki",
+                "LEITURA OBRIGATÓRIA: O amanhã não está à venda — Ailton Krenak",
+                "LEITURA OBRIGATÓRIA: Água de barrela — Eliana Alves Cruz"
+              ]
+            },
+            {
+              "id": "li-lp-6",
+              "nome": "6. Século XX — as literaturas modernas",
+              "itens": [
+                "Temáticas: epidemias e saúde coletiva; ética dos profissionais de saúde; guerras e saúde física/mental; alienação e a mente humana",
+                "Autores: Lima Barreto, Ascenso Ferreira, Manuel Bandeira, Patrícia Galvão, Graciliano Ramos, Clarice Lispector, Lúcio Cardoso, João Cabral de Melo Neto, Mauro Mota, Carlos Pena Filho, Cecília Meireles, Solano Trindade, Osman Lins, Guimarães Rosa, José Craveirinha, Noémia de Sousa",
+                "LEITURA OBRIGATÓRIA: Cemitério dos Vivos — Lima Barreto",
+                "LEITURA OBRIGATÓRIA: Parque Industrial — Patrícia Galvão (Pagu)",
+                "LEITURA OBRIGATÓRIA: São Bernardo — Graciliano Ramos"
+              ]
+            },
+            {
+              "id": "li-lp-7",
+              "nome": "7. Século XIX — a literatura nacional",
+              "itens": [
+                "Temáticas: saúde mental e profissionais da área; saúde pública e higienismo; impactos das doenças; saúde e desigualdade social",
+                "Autores: Machado de Assis, José de Alencar, Cruz e Sousa, Aluísio Azevedo, Castro Alves, Maria Firmina dos Reis, Julia Lopes de Almeida, Manoel de Oliveira Paiva, Francisca Julia, Narcisa Amália, Álvares de Azevedo, Generino dos Santos, José da Natividade Saldanha",
+                "LEITURA OBRIGATÓRIA: O Alienista — Machado de Assis",
+                "LEITURA OBRIGATÓRIA: Noite na Taverna — Álvares de Azevedo"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "li-ing",
+          "nome": "Língua Inglesa",
+          "temas": [
+            {
+              "id": "li-ing-1",
+              "nome": "1. Textos de opinião",
+              "itens": [
+                "Identificação de tese e argumentos principais",
+                "Função dos conectores argumentativos",
+                "Recursos persuasivos e estratégias retóricas",
+                "Posições críticas sobre temas sociais e culturais",
+                "Inferência de pontos de vista implícitos"
+              ]
+            },
+            {
+              "id": "li-ing-2",
+              "nome": "2. Textos jornalísticos e publicitários",
+              "itens": [
+                "Compreensão de elementos multimodais",
+                "Informações explícitas e implícitas em reportagens e anúncios",
+                "Funções persuasivas da linguagem publicitária",
+                "Marcas linguísticas de variação de registro",
+                "Comparação de textos jornalísticos sobre saúde em diferentes culturas"
+              ]
+            },
+            {
+              "id": "li-ing-3",
+              "nome": "3. Textos de divulgação científica",
+              "itens": [
+                "Termos técnico-científicos e vocabulário especializado",
+                "Estruturas textuais acadêmicas (introdução, metodologia, resultados)",
+                "Simplificação do discurso científico para o público geral",
+                "Expressões modais e seus efeitos no texto",
+                "Efeito de objetividade e imparcialidade no discurso"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CH",
+      "nome": "Ciências Humanas e Sociais Aplicadas",
+      "sigla": "CH",
+      "questoes": {"g1": 0, "g2": 22},
+      "somente_g2": true,
+      "disciplinas": [
+        {
+          "id": "ch-hist",
+          "nome": "História",
+          "temas": [
+            {
+              "id": "ch-hist-1",
+              "nome": "História Geral",
+              "itens": [
+                "1. A Idade Média: aspectos políticos, sociais, econômicos e culturais",
+                "2. O Renascimento (séc. XVI): desenvolvimento artístico, científico e literário",
+                "3. A Reforma Protestante e a Contrarreforma católica",
+                "4. O Iluminismo (séc. XVIII): precursores e fundamentos da modernidade",
+                "5. A Revolução Industrial: produção, ideologias sociais e impactos",
+                "6. A Revolução Francesa (1789-1799): fases e consequências",
+                "7. A Era Napoleônica (1799-1815)",
+                "8. O Imperialismo no séc. XIX: capitalismo monopolista e neocolonialismo",
+                "9. A Primeira Guerra Mundial (1914-1918)",
+                "10. O período entre guerras: crise de 1929 e regimes totalitários",
+                "11. A Segunda Guerra Mundial (1939-1945) e a criação da ONU",
+                "12. O mundo pós-guerra: Guerra Fria, globalização, descolonização e Apartheid",
+                "13. O século XXI e os desafios do mundo contemporâneo"
+              ]
+            },
+            {
+              "id": "ch-hist-2",
+              "nome": "História do Brasil",
+              "itens": [
+                "1. Povoamento e colonização: pré-colonial, povos indígenas e escravidão",
+                "2. O Primeiro Reinado (1821-1831)",
+                "3. O Segundo Reinado (1840-1889): economia, sociedade e abolição",
+                "4. A República Velha (1889-1930)",
+                "5. Era Vargas (1930-1945)",
+                "6. Os governos populistas (1945-1964)",
+                "7. Os governos militares (1964-1985)",
+                "8. A Nova República: planos, Constituição de 1988, Collor, FHC, Lula e séc. XXI",
+                "9. O Brasil e o mundo contemporâneo: ciência, tecnologia, memória e patrimônio"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch-geo",
+          "nome": "Geografia",
+          "temas": [
+            {
+              "id": "ch-geo-1",
+              "nome": "1. A dinâmica do espaço natural",
+              "itens": [
+                "Agentes do relevo terrestre",
+                "Elementos e fatores do clima",
+                "Grandes paisagens naturais da Terra",
+                "Hidrologia oceânica e continental"
+              ]
+            },
+            {
+              "id": "ch-geo-2",
+              "nome": "2. Organizações econômicas e políticas mundiais",
+              "itens": [
+                "Quadro político e socioeconômico do mundo atual",
+                "Globalização e blocos econômicos supranacionais",
+                "Crescimento econômico e desenvolvimento sustentável",
+                "Principais focos de tensão da atualidade"
+              ]
+            },
+            {
+              "id": "ch-geo-3",
+              "nome": "3. A demografia mundial",
+              "itens": [
+                "Principais taxas demográficas e relação socioeconômica",
+                "Estrutura da população",
+                "Distribuição geográfica da população",
+                "Mobilidade populacional",
+                "Urbanização e impactos ambientais"
+              ]
+            },
+            {
+              "id": "ch-geo-4",
+              "nome": "4. Aspectos fisiográficos do Brasil",
+              "itens": [
+                "Fundamentos geológicos e geomorfológicos",
+                "Diversidade climatobotânica",
+                "Principais bacias hidrográficas",
+                "Domínios morfoclimáticos"
+              ]
+            },
+            {
+              "id": "ch-geo-5",
+              "nome": "5. O espaço político e econômico do Brasil",
+              "itens": [
+                "Desigualdades regionais: aspectos socioeconômicos e ambientais",
+                "Divisão regional geoeconômica",
+                "Política energética",
+                "Estrutura agrária",
+                "Globalização e indústria brasileira"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch-filo",
+          "nome": "Filosofia",
+          "temas": [
+            {
+              "id": "ch-filo-1",
+              "nome": "Filosofia",
+              "itens": [
+                "1. A Filosofia: conceitos, origem e características do conhecimento filosófico",
+                "2. Epistemologia na antiguidade, modernidade e atualidade",
+                "3. Ética e liberdade",
+                "4. Ciência, mito e senso comum",
+                "5. Poder, cidadania e democracia",
+                "6. Princípios e valores da Bioética"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch-socio",
+          "nome": "Sociologia",
+          "temas": [
+            {
+              "id": "ch-socio-1",
+              "nome": "Sociologia",
+              "itens": [
+                "1. Fundamentos da Sociologia",
+                "2. Trabalho, estrutura social e desigualdade social",
+                "3. Movimentos sociais: conceitos, origem, tipos e objetivos",
+                "4. Cultura, ideologia e indústria cultural",
+                "5. Relações étnico-raciais e diversidade sociocultural",
+                "6. Meio ambiente, crise climática e impactos sociais"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CN",
+      "nome": "Ciências da Natureza e suas Tecnologias",
+      "sigla": "CN",
+      "questoes": {"g1": 22, "g2": 36},
+      "disciplinas": [
+        {
+          "id": "cn-bio",
+          "nome": "Biologia",
+          "temas": [
+            {
+              "id": "cn-bio-1",
+              "nome": "1. Citologia",
+              "itens": [
+                "Química da célula (bioquímica)",
+                "Membrana e parede celular",
+                "Citoplasma, organelas e núcleo",
+                "Superfície celular e trocas com o meio extracelular",
+                "Obtenção e utilização de energia; digestão intracelular",
+                "Síntese, secreção celular e reprodução"
+              ]
+            },
+            {
+              "id": "cn-bio-2",
+              "nome": "2. Histologia",
+              "itens": [
+                "Conceito de histologia",
+                "Tecidos animais: epitelial, conjuntivo, muscular e nervoso",
+                "Tecidos vegetais: meristemático, revestimento, sustentação, condução e parênquima"
+              ]
+            },
+            {
+              "id": "cn-bio-3",
+              "nome": "3. Embriologia",
+              "itens": [
+                "Etapas do desenvolvimento embrionário",
+                "Anexos embrionários"
+              ]
+            },
+            {
+              "id": "cn-bio-4",
+              "nome": "4. Genética",
+              "itens": [
+                "Conceitos básicos",
+                "Mendelismo e Neomendelismo",
+                "Polialelia (sistema ABO)",
+                "Fator Rh e eritroblastose fetal",
+                "Ligação gênica e mapas genéticos",
+                "Herança do sexo e cromossomos sexuais",
+                "Interação gênica e caracteres quantitativos",
+                "Mutações gênicas e aberrações cromossômicas",
+                "Função gênica e engenharia genética"
+              ]
+            },
+            {
+              "id": "cn-bio-5",
+              "nome": "5. Evolução",
+              "itens": [
+                "Origem da vida",
+                "Evidências da evolução",
+                "Principais teorias da evolução",
+                "Mecanismos da evolução",
+                "Formação de novas espécies",
+                "Evolução dos vertebrados",
+                "Evolução do homem",
+                "Noções de probabilidade",
+                "Noções de genética de população"
+              ]
+            },
+            {
+              "id": "cn-bio-6",
+              "nome": "6. Taxonomia",
+              "itens": [
+                "Classificações natural e artificial",
+                "Sistemas de classificação em uso corrente",
+                "Regras de nomenclatura"
+              ]
+            },
+            {
+              "id": "cn-bio-7",
+              "nome": "7. Vírus",
+              "itens": ["Vírus: características e ciclos reprodutivos"]
+            },
+            {
+              "id": "cn-bio-8",
+              "nome": "8. Monera, protista e fungos",
+              "itens": ["Monera, protista e fungos"]
+            },
+            {
+              "id": "cn-bio-9",
+              "nome": "9. Botânica",
+              "itens": [
+                "Reino das plantas e divisões",
+                "Morfologia vegetal",
+                "Fisiologia vegetal"
+              ]
+            },
+            {
+              "id": "cn-bio-10",
+              "nome": "10. Funções vitais nos animais",
+              "itens": [
+                "Nutrição e digestão",
+                "Circulação e transporte",
+                "Respiração",
+                "Excreção",
+                "Sistemas integradores e regulação funcional",
+                "Reprodução e desenvolvimento ontogenético"
+              ]
+            },
+            {
+              "id": "cn-bio-11",
+              "nome": "11. Programa de Saúde",
+              "itens": [
+                "Imunidade",
+                "Principais verminoses ocorrentes no Brasil",
+                "Protozooses",
+                "Viroses",
+                "Bacterioses",
+                "Enfermidades carenciais"
+              ]
+            },
+            {
+              "id": "cn-bio-12",
+              "nome": "12. Ecologia",
+              "itens": [
+                "Fundamentos de ecologia",
+                "Relações entre os seres vivos",
+                "Ciclos biogeoquímicos",
+                "Relações tróficas: teia e cadeia alimentar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cn-fis",
+          "nome": "Física",
+          "temas": [
+            {
+              "id": "cn-fis-1",
+              "nome": "1. Mecânica",
+              "itens": [
+                "Cinemática escalar: posição, velocidade, aceleração e tempo",
+                "Movimento uniforme (MU)",
+                "Movimento uniformemente variado (MUV): lançamentos vertical e horizontal",
+                "Cinemática vetorial",
+                "Movimentos circulares: MCU, MCUV e transmissão",
+                "Dinâmica: princípios e aplicações com e sem atrito",
+                "Forças no movimento circular no plano",
+                "Trabalho de forças constantes e variáveis; trabalho da força-peso",
+                "Energia cinética e Teorema da Energia Cinética (TEC)",
+                "Energias potenciais gravitacional e elástica",
+                "Sistema conservativo e conservação da energia mecânica",
+                "Potência mecânica e rendimento",
+                "Estática: centro de massa, torque e condições de equilíbrio",
+                "Massa específica, densidade, pressão de fluidos e atmosférica",
+                "Hidrostática: Stevin, Pascal e Arquimedes; corpos flutuantes"
+              ]
+            },
+            {
+              "id": "cn-fis-2",
+              "nome": "2. Termologia",
+              "itens": [
+                "Escalas Celsius e Kelvin",
+                "Capacidade térmica, calor específico, calor sensível e latente",
+                "Trocas de calor em sistema termicamente isolado",
+                "Mudanças de estado físico e estados de agregação",
+                "Teoria cinética dos gases e transformações; Clapeyron e lei de Dalton",
+                "Trabalho de um gás sob pressão constante; energia interna",
+                "Primeira lei da termodinâmica"
+              ]
+            },
+            {
+              "id": "cn-fis-3",
+              "nome": "3. Óptica e Ondulatória",
+              "itens": [
+                "Reflexão da luz: leis, espelhos planos e esféricos",
+                "Refração: leis, índice de refração, reflexão total, prismas, lentes, defeitos da visão e instrumentos ópticos",
+                "Ondulatória: natureza e propagação das ondas, superposição, ondas estacionárias",
+                "Ondas eletromagnéticas, espectro e luz visível"
+              ]
+            },
+            {
+              "id": "cn-fis-4",
+              "nome": "4. Eletromagnetismo",
+              "itens": [
+                "Carga elétrica; condutores e isolantes",
+                "Força eletrostática (Lei de Coulomb)",
+                "Campo elétrico e potencial de partículas eletrizadas",
+                "Campo elétrico uniforme (CEU)",
+                "Condutor em equilíbrio eletrostático; esfera condutora e capacidade elétrica",
+                "Corrente elétrica em sólidos, líquidos e gases; intensidade média",
+                "Resistores: leis de Ohm; energia e potência dissipada",
+                "Associação de resistores: série, paralelo e mista",
+                "Amperímetros, voltímetros e ponte de Wheatstone",
+                "Geradores, receptores e circuitos simples",
+                "Capacitores: capacitância, energia, capacitor plano e associações",
+                "Magnetismo: ímãs, linhas de indução e campo de condutores e solenoides",
+                "Força magnética sobre partículas e condutores",
+                "Indução eletromagnética: Faraday e Lenz"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cn-qui",
+          "nome": "Química",
+          "temas": [
+            {
+              "id": "cn-qui-1",
+              "nome": "1. Matéria e Energia",
+              "itens": [
+                "Classificação, transformações da matéria e separação de misturas",
+                "Estrutura atômica, modelos atômicos e classificação periódica",
+                "Cálculos químicos: mol, número de Avogadro e massa molar"
+              ]
+            },
+            {
+              "id": "cn-qui-2",
+              "nome": "2. Ligações Químicas",
+              "itens": [
+                "Elétrons de valência: ligações iônica, covalente e metálica; hibridização; pontes de hidrogênio e Van der Waals",
+                "Fórmulas estruturais e geometria molecular",
+                "Propriedades de compostos iônicos e covalentes; polaridade",
+                "Fórmula mínima, molecular e massa molecular"
+              ]
+            },
+            {
+              "id": "cn-qui-3",
+              "nome": "3. Funções Inorgânicas",
+              "itens": [
+                "Ácidos e bases: Arrhenius, Brönsted-Lowry e Lewis; classificação e nomenclatura",
+                "Sais e óxidos: conceito, solubilidade, classificação e nomenclatura"
+              ]
+            },
+            {
+              "id": "cn-qui-4",
+              "nome": "4. Reações Químicas",
+              "itens": [
+                "Classificação de reações, previsão de produtos e balanceamento",
+                "Oxirredução: número de oxidação, agentes e balanceamento redox",
+                "Estequiometria: relações ponderais e volumétricas, rendimento, pureza e reagente limitante"
+              ]
+            },
+            {
+              "id": "cn-qui-5",
+              "nome": "5. Radioatividade",
+              "itens": [
+                "Emissões radioativas, natureza das radiações e suas leis",
+                "Cinética radioativa, famílias, transmutação, fissão e fusão"
+              ]
+            },
+            {
+              "id": "cn-qui-6",
+              "nome": "6. Estudo Físico dos Gases",
+              "itens": [
+                "Estados físicos, gás ideal, leis dos gases e relações molares",
+                "Misturas gasosas: pressão e volume parcial, massa molar aparente",
+                "Difusão e efusão"
+              ]
+            },
+            {
+              "id": "cn-qui-7",
+              "nome": "7. Soluções",
+              "itens": [
+                "Solubilidade, classificação das soluções e propriedades coligativas",
+                "Unidades de concentração: molaridade, fração molar, % massa e volume"
+              ]
+            },
+            {
+              "id": "cn-qui-8",
+              "nome": "8. Equilíbrio Químico",
+              "itens": [
+                "Equilíbrio dinâmico, Kp e Kc, Le Chatelier e fatores que afetam o equilíbrio",
+                "Equilíbrio em solução aquosa: pH e pOH",
+                "Ka e Kb, hidrólise de sais, solução tampão e produto de solubilidade"
+              ]
+            },
+            {
+              "id": "cn-qui-9",
+              "nome": "9. Eletroquímica",
+              "itens": [
+                "Potencial-padrão de redução e espontaneidade; pilhas e eletrólise",
+                "Aspectos quantitativos em células eletroquímicas"
+              ]
+            },
+            {
+              "id": "cn-qui-10",
+              "nome": "10. Termoquímica",
+              "itens": [
+                "Calorimetria, energia interna, entalpia, equação termoquímica e lei de Hess",
+                "Entropia, energia livre e espontaneidade"
+              ]
+            },
+            {
+              "id": "cn-qui-11",
+              "nome": "11. Cinética Química",
+              "itens": [
+                "Velocidade das reações, teoria das colisões e fatores que a afetam",
+                "Lei de velocidade, ordem de reação, catalisadores e mecanismos"
+              ]
+            },
+            {
+              "id": "cn-qui-12",
+              "nome": "12. Química Orgânica",
+              "itens": [
+                "Cadeias carbônicas, estrutura dos compostos de carbono e classificação",
+                "Nomenclatura e propriedades das principais funções orgânicas",
+                "Isomeria, reações orgânicas e polímeros sintéticos"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MT",
+      "nome": "Matemática e suas Tecnologias",
+      "sigla": "MT",
+      "questoes": {"g1": 8, "g2": 10},
+      "disciplinas": [
+        {
+          "id": "mt-mat",
+          "nome": "Matemática",
+          "temas": [
+            {
+              "id": "mt-1",
+              "nome": "1. Fundamentos aritméticos e algébricos",
+              "itens": [
+                "Operações e ordenação de números reais; progressões aritméticas e geométricas",
+                "Razões, percentagens, proporcionalidade, escalas, regra de três, juros e divisão proporcional",
+                "Funções: afim, quadrática, máximo/mínimo, polinômios, equações, sistemas e desigualdades",
+                "Função exponencial e logarítmica; crescimento e decaimento exponencial",
+                "Matrizes (até 3×3) e sistemas lineares"
+              ]
+            },
+            {
+              "id": "mt-2",
+              "nome": "2. Estatística, Combinatória e Probabilidade",
+              "itens": [
+                "Estatística: população, amostra, tabela de frequência, histograma, medidas de localização e dispersão",
+                "Contagem, análise combinatória (arranjos, permutações, combinações) e binômio de Newton",
+                "Probabilidade: evento, condicional, independência, aplicações à Biologia/Medicina e eficácia de vacinas"
+              ]
+            },
+            {
+              "id": "mt-3",
+              "nome": "3. Geometria e Trigonometria",
+              "itens": [
+                "Relações métricas nos triângulos, polígonos, circunferência e círculo; perímetros e áreas",
+                "Áreas de superfícies, volumes e relações métricas de prismas, pirâmides, cilindros, cones e esferas; vistas e seções",
+                "Geometria analítica: distância, reta, posições relativas, perpendicularismo e circunferência",
+                "Arcos e ângulos; razões trigonométricas, teoremas do seno e cosseno, gráficos e modelagem periódica"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+      const STORAGE_KEY = "fps_vestibular_2027_v1";
+      const STATUS_LABELS = ["Não estudado", "Estudando", "Dominado"];
+
+      let storageAvailable = true;
+      let state = {
+        v: 1,
+        grupo: "g2",
+        tema: "auto",
+        aba: "painel",
+        filtro: "todos",
+        busca: "",
+        status: {},
+        star: {},
+        aberto: {},
+        settingsOpen: false
+      };
+
+      function stripAccents(str) {
+        return String(str || "")
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+      }
+
+      function escapeHtml(str) {
+        return String(str || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function highlightMatch(text, rawQuery) {
+        const cleanQuery = stripAccents(rawQuery).trim();
+        if (!cleanQuery) {
+          return escapeHtml(text);
+        }
+        const chars = Array.from(String(text));
+        let normStr = "";
+        const normToOrig = [];
+        for (let i = 0; i < chars.length; i++) {
+          const decomposed = chars[i]
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
+          for (let j = 0; j < decomposed.length; j++) {
+            normStr += decomposed[j];
+            normToOrig.push(i);
+          }
+        }
+        const matchRanges = [];
+        let startPos = 0;
+        while (startPos <= normStr.length - cleanQuery.length) {
+          const idx = normStr.indexOf(cleanQuery, startPos);
+          if (idx === -1) break;
+          const origStart = normToOrig[idx];
+          const origEnd = normToOrig[idx + cleanQuery.length - 1] + 1;
+          if (
+            matchRanges.length > 0 &&
+            origStart <= matchRanges[matchRanges.length - 1][1]
+          ) {
+            matchRanges[matchRanges.length - 1][1] = Math.max(
+              matchRanges[matchRanges.length - 1][1],
+              origEnd
+            );
+          } else {
+            matchRanges.push([origStart, origEnd]);
+          }
+          startPos = idx + cleanQuery.length;
+        }
+        if (matchRanges.length === 0) {
+          return escapeHtml(text);
+        }
+        let result = "";
+        let lastIdx = 0;
+        for (let r = 0; r < matchRanges.length; r++) {
+          const s = matchRanges[r][0];
+          const e = matchRanges[r][1];
+          if (s > lastIdx) {
+            result += escapeHtml(chars.slice(lastIdx, s).join(""));
+          }
+          result +=
+            '<mark class="search-highlight">' +
+            escapeHtml(chars.slice(s, e).join("")) +
+            "</mark>";
+          lastIdx = e;
+        }
+        if (lastIdx < chars.length) {
+          result += escapeHtml(chars.slice(lastIdx).join(""));
+        }
+        return result;
+      }
+
+      function buildDefaultAberto() {
+        const map = {};
+        for (let a = 0; a < DATA.areas.length; a++) {
+          const area = DATA.areas[a];
+          map["area:" + area.id] = true;
+          for (let d = 0; d < area.disciplinas.length; d++) {
+            const disc = area.disciplinas[d];
+            map["disc:" + disc.id] = a === 0 && d === 0;
+            for (let t = 0; t < disc.temas.length; t++) {
+              const tema = disc.temas[t];
+              map["tema:" + tema.id] = a === 0 && d === 0 && t === 0;
+            }
+          }
+        }
+        return map;
+      }
+
+      function loadState() {
+        const defaultAberto = buildDefaultAberto();
+        state.aberto = defaultAberto;
+        try {
+          const testKey = "__fps_storage_test__";
+          window.localStorage.setItem(testKey, "1");
+          window.localStorage.removeItem(testKey);
+          const raw = window.localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (parsed && parsed.v === 1) {
+              if (parsed.grupo === "g1" || parsed.grupo === "g2") {
+                state.grupo = parsed.grupo;
+              }
+              if (
+                parsed.tema === "auto" ||
+                parsed.tema === "light" ||
+                parsed.tema === "dark"
+              ) {
+                state.tema = parsed.tema;
+              }
+              if (parsed.aba === "painel" || parsed.aba === "conteudo") {
+                state.aba = parsed.aba;
+              }
+              if (parsed.status && typeof parsed.status === "object") {
+                state.status = parsed.status;
+              }
+              if (parsed.star && typeof parsed.star === "object") {
+                state.star = parsed.star;
+              }
+              if (parsed.aberto && typeof parsed.aberto === "object") {
+                state.aberto = Object.assign({}, defaultAberto, parsed.aberto);
+              }
+            }
+          }
+        } catch (err) {
+          storageAvailable = false;
+          const warnEl = document.getElementById("storage-warning");
+          if (warnEl) warnEl.classList.add("visible");
+        }
+      }
+
+      function saveState() {
+        if (!storageAvailable) return;
+        try {
+          const payload = {
+            v: 1,
+            grupo: state.grupo,
+            tema: state.tema,
+            aba: state.aba,
+            status: state.status,
+            star: state.star,
+            aberto: state.aberto
+          };
+          window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        } catch (err) {
+          storageAvailable = false;
+          const warnEl = document.getElementById("storage-warning");
+          if (warnEl) warnEl.classList.add("visible");
+        }
+      }
+
+      function getItemKey(temaId, idx) {
+        return temaId + "#" + idx;
+      }
+
+      function getItemStatus(key) {
+        const val = state.status[key];
+        return val === 1 || val === 2 ? val : 0;
+      }
+
+      function isItemStarred(key) {
+        return Boolean(state.star[key]);
+      }
+
+      function isMandatoryReading(text) {
+        return String(text || "").indexOf("LEITURA OBRIGATÓRIA") === 0;
+      }
+
+      function getGroupStructure(grupo) {
+        const areas = [];
+        for (let a = 0; a < DATA.areas.length; a++) {
+          const rawArea = DATA.areas[a];
+          if (rawArea.somente_g2 && grupo !== "g2") continue;
+          const qCount =
+            rawArea.questoes && typeof rawArea.questoes[grupo] === "number"
+              ? rawArea.questoes[grupo]
+              : 0;
+          if (qCount <= 0) continue;
+
+          const disciplinas = [];
+          const areaItems = [];
+
+          for (let d = 0; d < rawArea.disciplinas.length; d++) {
+            const rawDisc = rawArea.disciplinas[d];
+            const temas = [];
+            const discItems = [];
+
+            for (let t = 0; t < rawDisc.temas.length; t++) {
+              const rawTema = rawDisc.temas[t];
+              if (rawTema.grupo === "g2" && grupo !== "g2") continue;
+
+              const itens = [];
+              for (let i = 0; i < rawTema.itens.length; i++) {
+                const text = rawTema.itens[i];
+                const key = getItemKey(rawTema.id, i);
+                const itemObj = {
+                  key: key,
+                  temaId: rawTema.id,
+                  index: i,
+                  text: text,
+                  normText: stripAccents(text),
+                  status: getItemStatus(key),
+                  starred: isItemStarred(key),
+                  isReading: isMandatoryReading(text)
+                };
+                itens.push(itemObj);
+                discItems.push(itemObj);
+                areaItems.push(itemObj);
+              }
+
+              if (itens.length > 0) {
+                temas.push({
+                  id: rawTema.id,
+                  nome: rawTema.nome,
+                  normNome: stripAccents(rawTema.nome),
+                  grupo: rawTema.grupo || null,
+                  itens: itens
+                });
+              }
+            }
+
+            if (temas.length > 0) {
+              disciplinas.push({
+                id: rawDisc.id,
+                nome: rawDisc.nome,
+                normNome: stripAccents(rawDisc.nome),
+                temas: temas,
+                allItems: discItems
+              });
+            }
+          }
+
+          areas.push({
+            id: rawArea.id,
+            nome: rawArea.nome,
+            sigla: rawArea.sigla,
+            questoes: qCount,
+            disciplinas: disciplinas,
+            allItems: areaItems
+          });
+        }
+        return areas;
+      }
+
+      function computeStats(items) {
+        const total = items.length;
+        let est = 0;
+        let dom = 0;
+        let rev = 0;
+        let leiturasTotal = 0;
+        let leiturasDom = 0;
+        let leiturasEst = 0;
+
+        for (let i = 0; i < total; i++) {
+          const it = items[i];
+          if (it.status >= 1) est++;
+          if (it.status === 2) dom++;
+          if (it.starred) rev++;
+          if (it.isReading) {
+            leiturasTotal++;
+            if (it.status >= 1) leiturasEst++;
+            if (it.status === 2) leiturasDom++;
+          }
+        }
+
+        const pctEst = total > 0 ? (est / total) * 100 : 0;
+        const pctDom = total > 0 ? (dom / total) * 100 : 0;
+        const pctOnlyEst = total > 0 ? ((est - dom) / total) * 100 : 0;
+
+        return {
+          total: total,
+          naoIniciados: total - est,
+          apenasEstudando: est - dom,
+          estudado: est,
+          dominado: dom,
+          revisar: rev,
+          leiturasTotal: leiturasTotal,
+          leiturasDom: leiturasDom,
+          leiturasEst: leiturasEst,
+          pctEst: pctEst,
+          pctDom: pctDom,
+          pctOnlyEst: pctOnlyEst
+        };
+      }
+
+      function computeWeightedCoverage(areas) {
+        let sumWeightedProgress = 0;
+        let sumWeights = 0;
+
+        for (let a = 0; a < areas.length; a++) {
+          const area = areas[a];
+          const nItems = area.allItems.length;
+          if (nItems === 0 || area.questoes <= 0) continue;
+          const itemWeight = area.questoes / nItems;
+          for (let i = 0; i < nItems; i++) {
+            const st = area.allItems[i].status;
+            sumWeightedProgress += itemWeight * (st / 2);
+            sumWeights += itemWeight;
+          }
+        }
+
+        const pct = sumWeights > 0 ? (sumWeightedProgress / sumWeights) * 100 : 0;
+        return {
+          pct: pct,
+          totalQuestoes: Math.round(sumWeights)
+        };
+      }
+
+      function formatPct(num, decimals) {
+        const d = typeof decimals === "number" ? decimals : 1;
+        return num.toFixed(d).replace(".", ",") + "%";
+      }
+
+      function calculateDaysRemaining(provaIso) {
+        const target = new Date(provaIso);
+        const now = new Date();
+        const targetDay = new Date(
+          target.getFullYear(),
+          target.getMonth(),
+          target.getDate()
+        );
+        const todayDay = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate()
+        );
+        const diffMs = targetDay.getTime() - todayDay.getTime();
+        return Math.round(diffMs / 86400000);
+      }
+
+      function applyTheme() {
+        const htmlEl = document.documentElement;
+        htmlEl.setAttribute("data-theme", state.tema);
+        const labelEl = document.getElementById("theme-toggle-label");
+        const mapLabel = {
+          auto: "Tema: Auto",
+          light: "Tema: Claro",
+          dark: "Tema: Escuro"
+        };
+        if (labelEl) {
+          labelEl.textContent = mapLabel[state.tema] || "Tema: Auto";
+        }
+        const metaTheme = document.getElementById("meta-theme-color");
+        if (metaTheme) {
+          const isDark =
+            state.tema === "dark" ||
+            (state.tema === "auto" &&
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          metaTheme.setAttribute("content", isDark ? "#1b1d22" : "#0f766e");
+        }
+      }
+
+      function updateStickyOffset() {
+        const header = document.getElementById("app-header");
+        const stickyBar = document.getElementById("conteudo-sticky-bar");
+        if (header && stickyBar) {
+          stickyBar.style.setProperty("--header-offset", header.offsetHeight + "px");
+        }
+      }
+
+      function renderHeaderAndNav(areas, allGroupItems, weighted) {
+        const stats = computeStats(allGroupItems);
+
+        const g1Btn = document.getElementById("btn-group-g1");
+        const g2Btn = document.getElementById("btn-group-g2");
+        if (g1Btn && g2Btn) {
+          g1Btn.setAttribute("aria-pressed", state.grupo === "g1" ? "true" : "false");
+          g2Btn.setAttribute("aria-pressed", state.grupo === "g2" ? "true" : "false");
+        }
+
+        const badgeEl = document.getElementById("header-group-badge");
+        if (badgeEl) {
+          badgeEl.textContent = state.grupo === "g1" ? "Grupo 1" : "Grupo 2 · Med";
+        }
+
+        const topPctDom = document.getElementById("top-pct-dom");
+        const topCntDom = document.getElementById("top-cnt-dom");
+        const topPctEst = document.getElementById("top-pct-est");
+        const topPctPond = document.getElementById("top-pct-pond");
+        const topBarDom = document.getElementById("top-bar-dom");
+        const topBarEst = document.getElementById("top-bar-est");
+        const topProgress = document.getElementById("top-progressbar");
+
+        if (topPctDom) topPctDom.textContent = formatPct(stats.pctDom, 1);
+        if (topCntDom) topCntDom.textContent = stats.dominado + "/" + stats.total;
+        if (topPctEst) topPctEst.textContent = formatPct(stats.pctEst, 1);
+        if (topPctPond) topPctPond.textContent = formatPct(weighted.pct, 1);
+        if (topBarDom) topBarDom.style.width = stats.pctDom.toFixed(2) + "%";
+        if (topBarEst) topBarEst.style.width = stats.pctOnlyEst.toFixed(2) + "%";
+        if (topProgress) {
+          topProgress.setAttribute("aria-valuenow", String(Math.round(stats.pctDom)));
+        }
+
+        const navPainel = document.getElementById("nav-btn-painel");
+        const navConteudo = document.getElementById("nav-btn-conteudo");
+        const viewPainel = document.getElementById("view-painel");
+        const viewConteudo = document.getElementById("view-conteudo");
+        const navBadge = document.getElementById("nav-badge-count");
+
+        if (navPainel && navConteudo && viewPainel && viewConteudo) {
+          const isPainel = state.aba === "painel";
+          navPainel.setAttribute("aria-pressed", isPainel ? "true" : "false");
+          navConteudo.setAttribute("aria-pressed", !isPainel ? "true" : "false");
+          viewPainel.classList.toggle("active", isPainel);
+          viewConteudo.classList.toggle("active", !isPainel);
+        }
+
+        if (navBadge) {
+          navBadge.textContent = stats.dominado + "/" + stats.total;
+        }
+      }
+
+      function renderPainel(areas, allGroupItems, weighted) {
+        const gInfo = DATA.grupos[state.grupo];
+        const stats = computeStats(allGroupItems);
+
+        const titleEl = document.getElementById("painel-group-title");
+        const cursosEl = document.getElementById("painel-group-cursos");
+        const datesEl = document.getElementById("painel-exam-dates");
+        const hoursEl = document.getElementById("painel-exam-hours");
+        const questEl = document.getElementById("painel-exam-questions");
+        const countdownEl = document.getElementById("painel-countdown");
+        const paceEl = document.getElementById("painel-pace");
+
+        if (titleEl) titleEl.textContent = gInfo.nome;
+        if (cursosEl) cursosEl.textContent = "Cursos: " + gInfo.cursos.join(", ");
+        if (datesEl) datesEl.textContent = gInfo.datas.join(" e ");
+        if (hoursEl) hoursEl.textContent = gInfo.horario;
+        if (questEl) {
+          questEl.textContent =
+            weighted.totalQuestoes + " questões · " + stats.total + " itens";
+        }
+
+        const daysLeft = calculateDaysRemaining(gInfo.prova_iso);
+        const firstDateStr = gInfo.datas[0];
+        if (countdownEl) {
+          if (daysLeft > 1) {
+            countdownEl.textContent =
+              "Faltam " + daysLeft + " dias para " + firstDateStr;
+          } else if (daysLeft === 1) {
+            countdownEl.textContent = "Falta 1 dia para " + firstDateStr;
+          } else if (daysLeft === 0) {
+            countdownEl.textContent = "A prova é hoje (" + firstDateStr + ")!";
+          } else {
+            countdownEl.textContent =
+              "Prova realizada em " +
+              firstDateStr +
+              " (há " +
+              Math.abs(daysLeft) +
+              " dias)";
+          }
+        }
+
+        const pendingItems = stats.total - stats.dominado;
+        if (paceEl) {
+          if (pendingItems === 0) {
+            paceEl.textContent = "Concluído (0 pendentes)";
+          } else if (daysLeft > 0) {
+            const perDay = pendingItems / daysLeft;
+            const formattedPace =
+              perDay >= 10
+                ? Math.ceil(perDay).toString()
+                : perDay.toFixed(1).replace(".", ",");
+            paceEl.textContent =
+              "≈ " + formattedPace + " itens/dia (" + pendingItems + " pendentes)";
+          } else {
+            paceEl.textContent =
+              "Prazo encerrado (" + pendingItems + " itens pendentes)";
+          }
+        }
+
+        // Cobertura simples e ponderada
+        const estPctEl = document.getElementById("kpi-simple-est-pct");
+        const estCntEl = document.getElementById("kpi-simple-est-cnt");
+        const domPctEl = document.getElementById("kpi-simple-dom-pct");
+        const domCntEl = document.getElementById("kpi-simple-dom-cnt");
+        const wPctEl = document.getElementById("kpi-weighted-pct");
+        const wDetailEl = document.getElementById("kpi-weighted-detail");
+
+        if (estPctEl) estPctEl.textContent = formatPct(stats.pctEst, 1);
+        if (estCntEl) estCntEl.textContent = stats.estudado + "/" + stats.total + " itens";
+        if (domPctEl) domPctEl.textContent = formatPct(stats.pctDom, 1);
+        if (domCntEl) domCntEl.textContent = stats.dominado + "/" + stats.total + " itens";
+        if (wPctEl) wPctEl.textContent = formatPct(weighted.pct, 1);
+        if (wDetailEl) {
+          wDetailEl.textContent =
+            "Base: " + weighted.totalQuestoes + " questões no " + gInfo.nome;
+        }
+
+        // Areas Grid
+        const areasSummaryEl = document.getElementById("painel-areas-summary");
+        if (areasSummaryEl) {
+          let totalDiscs = 0;
+          for (let i = 0; i < areas.length; i++) {
+            totalDiscs += areas[i].disciplinas.length;
+          }
+          areasSummaryEl.textContent =
+            areas.length + " áreas · " + totalDiscs + " disciplinas";
+        }
+
+        const areasGridEl = document.getElementById("painel-areas-grid");
+        if (areasGridEl) {
+          let html = "";
+          for (let a = 0; a < areas.length; a++) {
+            const area = areas[a];
+            const aStats = computeStats(area.allItems);
+            html +=
+              '<article class="area-card">' +
+              '<div class="area-card-top">' +
+              "<div>" +
+              '<span class="area-sigla-badge">' +
+              escapeHtml(area.sigla) +
+              "</span>" +
+              '<h3 class="area-card-name">' +
+              escapeHtml(area.nome) +
+              "</h3>" +
+              "</div>" +
+              '<span class="area-questoes-tag">' +
+              area.questoes +
+              " questões</span>" +
+              "</div>" +
+              '<div class="progress-track" aria-hidden="true">' +
+              '<div class="progress-fill-dom" style="width:' +
+              aStats.pctDom.toFixed(2) +
+              '%"></div>' +
+              '<div class="progress-fill-est" style="width:' +
+              aStats.pctOnlyEst.toFixed(2) +
+              '%"></div>' +
+              "</div>" +
+              '<div class="area-card-stats">' +
+              "<span>" +
+              aStats.dominado +
+              "/" +
+              aStats.total +
+              " itens dominados</span>" +
+              "<strong>" +
+              formatPct(aStats.pctDom, 1) +
+              " dom.</strong>" +
+              "</div>" +
+              '<div class="kpi-note">Estudado: ' +
+              formatPct(aStats.pctEst, 1) +
+              " (" +
+              aStats.estudado +
+              "/" +
+              aStats.total +
+              ")</div>" +
+              '<button type="button" class="area-jump-btn" data-jump-area="' +
+              escapeHtml(area.id) +
+              '">Abrir ' +
+              escapeHtml(area.sigla) +
+              " no Conteúdo →</button>" +
+              "</article>";
+          }
+          areasGridEl.innerHTML = html;
+        }
+
+        // Leituras Obrigatórias
+        const readingsPill = document.getElementById("readings-summary-pill");
+        const readingsListEl = document.getElementById("painel-readings-list");
+        const readingItems = [];
+        for (let i = 0; i < allGroupItems.length; i++) {
+          if (allGroupItems[i].isReading) {
+            readingItems.push(allGroupItems[i]);
+          }
+        }
+        if (readingsPill) {
+          readingsPill.textContent =
+            stats.leiturasDom + "/" + stats.leiturasTotal + " concluídas";
+        }
+        if (readingsListEl) {
+          let rHtml = "";
+          for (let r = 0; r < readingItems.length; r++) {
+            const item = readingItems[r];
+            const cleanTitle = item.text.replace(/^LEITURA OBRIGATÓRIA:\s*/i, "");
+            const stClass =
+              item.status === 2
+                ? "dom"
+                : item.status === 1
+                ? "est"
+                : "";
+            rHtml +=
+              '<li class="reading-mini-item" data-status="' +
+              item.status +
+              '">' +
+              '<span class="reading-mini-title">' +
+              escapeHtml(cleanTitle) +
+              "</span>" +
+              '<button type="button" class="status-badge" data-cycle-key="' +
+              escapeHtml(item.key) +
+              '" aria-label="Alternar status da leitura ' +
+              escapeHtml(cleanTitle) +
+              ": atual " +
+              STATUS_LABELS[item.status] +
+              '">' +
+              (stClass ? '<span class="stat-dot ' + stClass + '"></span>' : "") +
+              STATUS_LABELS[item.status] +
+              "</button>" +
+              "</li>";
+          }
+          readingsListEl.innerHTML = rHtml;
+        }
+
+        // Settings Discipline Bulk buttons
+        const discGridEl = document.getElementById("settings-disc-grid");
+        if (discGridEl) {
+          let dHtml = "";
+          for (let a = 0; a < areas.length; a++) {
+            const area = areas[a];
+            for (let d = 0; d < area.disciplinas.length; d++) {
+              const disc = area.disciplinas[d];
+              const dStats = computeStats(disc.allItems);
+              dHtml +=
+                '<button type="button" class="btn-disc-bulk" data-bulk-disc="' +
+                escapeHtml(disc.id) +
+                '" data-bulk-disc-name="' +
+                escapeHtml(disc.nome) +
+                '">' +
+                "<span>" +
+                escapeHtml(disc.nome) +
+                " (" +
+                dStats.dominado +
+                "/" +
+                dStats.total +
+                ")</span>" +
+                '<span class="disc-action-tag">Dominar ✓</span>' +
+                "</button>";
+            }
+          }
+          discGridEl.innerHTML = dHtml;
+        }
+      }
+
+      function itemMatchesFilterAndSearch(item, filtro, normQuery) {
+        if (filtro === "nao_iniciados" && item.status !== 0) return false;
+        if (filtro === "estudando" && item.status !== 1) return false;
+        if (filtro === "dominados" && item.status !== 2) return false;
+        if (filtro === "revisar" && !item.starred) return false;
+        if (filtro === "leituras" && !item.isReading) return false;
+
+        if (normQuery) {
+          return item.normText.indexOf(normQuery) !== -1;
+        }
+        return true;
+      }
+
+      function renderConteudo(areas, allGroupItems) {
+        const stats = computeStats(allGroupItems);
+
+        // Update filter chip counts & active state
+        const chipCounts = {
+          todos: stats.total,
+          nao_iniciados: stats.naoIniciados,
+          estudando: stats.apenasEstudando,
+          dominados: stats.dominado,
+          revisar: stats.revisar,
+          leituras: stats.leiturasTotal
+        };
+
+        const chips = document.querySelectorAll(".filter-chip");
+        for (let c = 0; c < chips.length; c++) {
+          const chip = chips[c];
+          const fKey = chip.getAttribute("data-filter");
+          chip.setAttribute("aria-pressed", state.filtro === fKey ? "true" : "false");
+          const cntSpan = document.getElementById("chip-cnt-" + fKey);
+          if (cntSpan && typeof chipCounts[fKey] === "number") {
+            cntSpan.textContent = String(chipCounts[fKey]);
+          }
+        }
+
+        const rawQuery = state.busca || "";
+        const normQuery = stripAccents(rawQuery).trim();
+        const isSearchingOrFiltering = normQuery.length > 0 || state.filtro !== "todos";
+
+        const clearBtn = document.getElementById("search-clear-btn");
+        if (clearBtn) {
+          clearBtn.classList.toggle("visible", rawQuery.length > 0);
+        }
+
+        let matchedCount = 0;
+        let html = "";
+
+        for (let a = 0; a < areas.length; a++) {
+          const area = areas[a];
+          const areaStats = computeStats(area.allItems);
+          let areaHtml = "";
+          let areaMatchedItems = 0;
+
+          for (let d = 0; d < area.disciplinas.length; d++) {
+            const disc = area.disciplinas[d];
+            const discStats = computeStats(disc.allItems);
+            let discHtml = "";
+            let discMatchedItems = 0;
+
+            for (let t = 0; t < disc.temas.length; t++) {
+              const tema = disc.temas[t];
+              const temaStats = computeStats(tema.itens);
+              let itemsHtml = "";
+              let temaMatchedItems = 0;
+
+              for (let i = 0; i < tema.itens.length; i++) {
+                const item = tema.itens[i];
+                if (!itemMatchesFilterAndSearch(item, state.filtro, normQuery)) {
+                  continue;
+                }
+                temaMatchedItems++;
+                discMatchedItems++;
+                areaMatchedItems++;
+                matchedCount++;
+
+                const stLabel = STATUS_LABELS[item.status];
+                const dotHtml =
+                  item.status === 2
+                    ? '<span class="stat-dot dom"></span>'
+                    : item.status === 1
+                    ? '<span class="stat-dot est"></span>'
+                    : "";
+
+                itemsHtml +=
+                  '<li class="checklist-item" data-status="' +
+                  item.status +
+                  '">' +
+                  '<button type="button" class="item-status-btn" data-cycle-key="' +
+                  escapeHtml(item.key) +
+                  '" aria-label="' +
+                  escapeHtml(item.text) +
+                  " — Status atual: " +
+                  stLabel +
+                  '. Toque para alternar.">' +
+                  '<span class="item-text">' +
+                  highlightMatch(item.text, rawQuery) +
+                  "</span>" +
+                  '<span class="status-badge">' +
+                  dotHtml +
+                  stLabel +
+                  "</span>" +
+                  "</button>" +
+                  '<button type="button" class="star-btn" data-star-key="' +
+                  escapeHtml(item.key) +
+                  '" aria-pressed="' +
+                  (item.starred ? "true" : "false") +
+                  '" aria-label="' +
+                  (item.starred
+                    ? "Remover marcação de revisão: "
+                    : "Marcar para revisar: ") +
+                  escapeHtml(item.text) +
+                  '">' +
+                  (item.starred ? "★" : "☆") +
+                  "</button>" +
+                  "</li>";
+              }
+
+              if (temaMatchedItems === 0 && isSearchingOrFiltering) {
+                continue;
+              }
+
+              const temaAccKey = "tema:" + tema.id;
+              const isTemaOpen = normQuery.length > 0 || state.filtro !== "todos"
+                ? true
+                : Boolean(state.aberto[temaAccKey]);
+              const temaBodyId = "body-tema-" + tema.id;
+
+              discHtml +=
+                '<div class="acc-tema">' +
+                '<button type="button" class="acc-header-btn" data-acc-key="' +
+                escapeHtml(temaAccKey) +
+                '" aria-expanded="' +
+                (isTemaOpen ? "true" : "false") +
+                '" aria-controls="' +
+                escapeHtml(temaBodyId) +
+                '">' +
+                '<div class="acc-title-wrap">' +
+                '<div class="acc-title-line">' +
+                '<span class="acc-title-text">' +
+                escapeHtml(tema.nome) +
+                "</span>" +
+                "</div>" +
+                "</div>" +
+                '<div class="acc-right-meta">' +
+                '<div class="acc-count-row">' +
+                "<span>" +
+                temaStats.dominado +
+                "/" +
+                temaStats.total +
+                "</span>" +
+                '<span class="chevron-icon" aria-hidden="true">▶</span>' +
+                "</div>" +
+                '<div class="micro-bar" aria-hidden="true">' +
+                '<div class="progress-fill-dom" style="width:' +
+                temaStats.pctDom.toFixed(1) +
+                '%"></div>' +
+                '<div class="progress-fill-est" style="width:' +
+                temaStats.pctOnlyEst.toFixed(1) +
+                '%"></div>' +
+                "</div>" +
+                "</div>" +
+                "</button>" +
+                '<div id="' +
+                escapeHtml(temaBodyId) +
+                '" class="acc-body' +
+                (isTemaOpen ? " open" : "") +
+                '">' +
+                '<ul class="items-list">' +
+                itemsHtml +
+                "</ul>" +
+                "</div>" +
+                "</div>";
+            }
+
+            if (discMatchedItems === 0 && isSearchingOrFiltering) {
+              continue;
+            }
+
+            const discAccKey = "disc:" + disc.id;
+            const isDiscOpen = normQuery.length > 0 || state.filtro !== "todos"
+              ? true
+              : Boolean(state.aberto[discAccKey]);
+            const discBodyId = "body-disc-" + disc.id;
+
+            areaHtml +=
+              '<div class="acc-disc">' +
+              '<button type="button" class="acc-header-btn" data-acc-key="' +
+              escapeHtml(discAccKey) +
+              '" aria-expanded="' +
+              (isDiscOpen ? "true" : "false") +
+              '" aria-controls="' +
+              escapeHtml(discBodyId) +
+              '">' +
+              '<div class="acc-title-wrap">' +
+              '<div class="acc-title-line">' +
+              '<span class="acc-title-text">' +
+              escapeHtml(disc.nome) +
+              "</span>" +
+              "</div>" +
+              "</div>" +
+              '<div class="acc-right-meta">' +
+              '<div class="acc-count-row">' +
+              "<span>" +
+              discStats.dominado +
+              "/" +
+              discStats.total +
+              " (" +
+              formatPct(discStats.pctDom, 0) +
+              ")</span>" +
+              '<span class="chevron-icon" aria-hidden="true">▶</span>' +
+              "</div>" +
+              '<div class="micro-bar" aria-hidden="true">' +
+              '<div class="progress-fill-dom" style="width:' +
+              discStats.pctDom.toFixed(1) +
+              '%"></div>' +
+              '<div class="progress-fill-est" style="width:' +
+              discStats.pctOnlyEst.toFixed(1) +
+              '%"></div>' +
+              "</div>" +
+              "</div>" +
+              "</button>" +
+              '<div id="' +
+              escapeHtml(discBodyId) +
+              '" class="acc-body' +
+              (isDiscOpen ? " open" : "") +
+              '">' +
+              discHtml +
+              "</div>" +
+              "</div>";
+          }
+
+          if (areaMatchedItems === 0 && isSearchingOrFiltering) {
+            continue;
+          }
+
+          const areaAccKey = "area:" + area.id;
+          const isAreaOpen = normQuery.length > 0 || state.filtro !== "todos"
+            ? true
+            : Boolean(state.aberto[areaAccKey]);
+          const areaBodyId = "body-area-" + area.id;
+
+          html +=
+            '<section class="acc-area" id="sec-area-' +
+            escapeHtml(area.id) +
+            '">' +
+            '<button type="button" class="acc-header-btn" data-acc-key="' +
+            escapeHtml(areaAccKey) +
+            '" aria-expanded="' +
+            (isAreaOpen ? "true" : "false") +
+            '" aria-controls="' +
+            escapeHtml(areaBodyId) +
+            '">' +
+            '<div class="acc-title-wrap">' +
+            '<div class="acc-title-line">' +
+            '<span class="area-sigla-badge" style="margin:0;">' +
+            escapeHtml(area.sigla) +
+            "</span>" +
+            '<span class="acc-title-text">' +
+            escapeHtml(area.nome) +
+            "</span>" +
+            '<span class="area-questoes-tag">' +
+            area.questoes +
+            "q</span>" +
+            "</div>" +
+            "</div>" +
+            '<div class="acc-right-meta">' +
+            '<div class="acc-count-row">' +
+            "<span>" +
+            areaStats.dominado +
+            "/" +
+            areaStats.total +
+            " (" +
+            formatPct(areaStats.pctDom, 0) +
+            ")</span>" +
+            '<span class="chevron-icon" aria-hidden="true">▶</span>' +
+            "</div>" +
+            '<div class="micro-bar" aria-hidden="true">' +
+            '<div class="progress-fill-dom" style="width:' +
+            areaStats.pctDom.toFixed(1) +
+            '%"></div>' +
+            '<div class="progress-fill-est" style="width:' +
+            areaStats.pctOnlyEst.toFixed(1) +
+            '%"></div>' +
+            "</div>" +
+            "</div>" +
+            "</button>" +
+            '<div id="' +
+            escapeHtml(areaBodyId) +
+            '" class="acc-body' +
+            (isAreaOpen ? " open" : "") +
+            '">' +
+            areaHtml +
+            "</div>" +
+            "</section>";
+        }
+
+        const resultsCountEl = document.getElementById("search-results-count");
+        if (resultsCountEl) {
+          if (normQuery.length > 0 || state.filtro !== "todos") {
+            resultsCountEl.textContent =
+              matchedCount +
+              (matchedCount === 1 ? " resultado encontrado" : " resultados encontrados") +
+              " (de " +
+              stats.total +
+              ")";
+          } else {
+            resultsCountEl.textContent =
+              stats.total + " itens no " + DATA.grupos[state.grupo].nome;
+          }
+        }
+
+        const container = document.getElementById("checklist-container");
+        if (container) {
+          if (!html) {
+            container.innerHTML =
+              '<div class="empty-state">' +
+              "<p>Nenhum item encontrado para o filtro ou busca atual.</p>" +
+              '<button type="button" class="btn-secondary" id="btn-reset-filters">Limpar busca e filtros</button>' +
+              "</div>";
+          } else {
+            container.innerHTML = html;
+          }
+        }
+      }
+
+      function renderAll() {
+        applyTheme();
+        const areas = getGroupStructure(state.grupo);
+        const allGroupItems = [];
+        for (let a = 0; a < areas.length; a++) {
+          for (let i = 0; i < areas[a].allItems.length; i++) {
+            allGroupItems.push(areas[a].allItems[i]);
+          }
+        }
+        const weighted = computeWeightedCoverage(areas);
+
+        renderHeaderAndNav(areas, allGroupItems, weighted);
+        renderPainel(areas, allGroupItems, weighted);
+        renderConteudo(areas, allGroupItems);
+        updateStickyOffset();
+      }
+
+      function showSettingsFeedback(message) {
+        const el = document.getElementById("settings-feedback");
+        if (!el) return;
+        el.textContent = message;
+        el.classList.add("visible");
+        window.setTimeout(function () {
+          el.classList.remove("visible");
+        }, 4000);
+      }
+
+      function exportBackupJson() {
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, "0");
+        const dd = String(now.getDate()).padStart(2, "0");
+        const filename = "fps-cobertura-" + yyyy + "-" + mm + "-" + dd + ".json";
+
+        const payload = {
+          v: 1,
+          exportado_em: now.toISOString(),
+          grupo: state.grupo,
+          tema: state.tema,
+          status: state.status,
+          star: state.star,
+          aberto: state.aberto
+        };
+
+        const blob = new Blob([JSON.stringify(payload, null, 2)], {
+          type: "application/json;charset=utf-8"
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        showSettingsFeedback("Backup exportado: " + filename);
+      }
+
+      function handleImportFile(file) {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function (ev) {
+          try {
+            const parsed = JSON.parse(String(ev.target.result || ""));
+            if (
+              !parsed ||
+              typeof parsed !== "object" ||
+              parsed.v !== 1 ||
+              typeof parsed.status !== "object" ||
+              parsed.status === null
+            ) {
+              window.alert(
+                "Arquivo inválido: o JSON precisa conter 'v: 1' e um objeto 'status'."
+              );
+              return;
+            }
+
+            const statusKeys = Object.keys(parsed.status);
+            for (let i = 0; i < statusKeys.length; i++) {
+              const val = parsed.status[statusKeys[i]];
+              if (val !== 0 && val !== 1 && val !== 2) {
+                window.alert(
+                  "Arquivo inválido: valores de status devem ser 0, 1 ou 2."
+                );
+                return;
+              }
+            }
+
+            const confirmed = window.confirm(
+              "Importar backup com " +
+                statusKeys.length +
+                " registros de status? Isso substituirá o progresso atual."
+            );
+            if (!confirmed) return;
+
+            state.status = parsed.status || {};
+            state.star =
+              parsed.star && typeof parsed.star === "object" ? parsed.star : {};
+            if (parsed.grupo === "g1" || parsed.grupo === "g2") {
+              state.grupo = parsed.grupo;
+            }
+            if (
+              parsed.tema === "auto" ||
+              parsed.tema === "light" ||
+              parsed.tema === "dark"
+            ) {
+              state.tema = parsed.tema;
+            }
+            if (parsed.aberto && typeof parsed.aberto === "object") {
+              state.aberto = Object.assign(buildDefaultAberto(), parsed.aberto);
+            }
+            saveState();
+            renderAll();
+            showSettingsFeedback("Backup importado com sucesso!");
+          } catch (err) {
+            window.alert("Erro ao ler o arquivo JSON: formato inválido.");
+          }
+        };
+        reader.readAsText(file, "utf-8");
+      }
+
+      function markDisciplineDominated(discId, discName) {
+        const areas = getGroupStructure(state.grupo);
+        let targetDisc = null;
+        for (let a = 0; a < areas.length; a++) {
+          for (let d = 0; d < areas[a].disciplinas.length; d++) {
+            if (areas[a].disciplinas[d].id === discId) {
+              targetDisc = areas[a].disciplinas[d];
+              break;
+            }
+          }
+        }
+        if (!targetDisc) return;
+
+        const ok = window.confirm(
+          'Marcar todos os ' +
+            targetDisc.allItems.length +
+            ' itens de "' +
+            discName +
+            '" como Dominado?'
+        );
+        if (!ok) return;
+
+        for (let i = 0; i < targetDisc.allItems.length; i++) {
+          state.status[targetDisc.allItems[i].key] = 2;
+        }
+        saveState();
+        renderAll();
+        showSettingsFeedback(
+          'Disciplina "' + discName + '" marcada como Dominada.'
+        );
+      }
+
+      function resetAllProgress() {
+        const firstConfirm = window.confirm(
+          "Tem certeza que deseja ZERAR todo o seu progresso e estrelas de revisão?"
+        );
+        if (!firstConfirm) return;
+
+        const secondConfirm = window.confirm(
+          "CONFIRMAÇÃO FINAL: Esta ação apagará todos os itens estudados/dominados em ambos os grupos. Confirmar exclusão?"
+        );
+        if (!secondConfirm) return;
+
+        state.status = {};
+        state.star = {};
+        saveState();
+        renderAll();
+        showSettingsFeedback("Todo o progresso foi zerado.");
+      }
+
+      function setAllAccordions(openState) {
+        for (let a = 0; a < DATA.areas.length; a++) {
+          const area = DATA.areas[a];
+          state.aberto["area:" + area.id] = openState;
+          for (let d = 0; d < area.disciplinas.length; d++) {
+            const disc = area.disciplinas[d];
+            state.aberto["disc:" + disc.id] = openState;
+            for (let t = 0; t < disc.temas.length; t++) {
+              const tema = disc.temas[t];
+              state.aberto["tema:" + tema.id] = openState;
+            }
+          }
+        }
+        saveState();
+        renderAll();
+      }
+
+      function bindEvents() {
+        // Theme toggle
+        const themeBtn = document.getElementById("theme-toggle-btn");
+        if (themeBtn) {
+          themeBtn.addEventListener("click", function () {
+            const order = ["auto", "light", "dark"];
+            const nextIdx = (order.indexOf(state.tema) + 1) % order.length;
+            state.tema = order[nextIdx];
+            saveState();
+            applyTheme();
+          });
+        }
+
+        // Group switcher
+        const g1Btn = document.getElementById("btn-group-g1");
+        const g2Btn = document.getElementById("btn-group-g2");
+        [g1Btn, g2Btn].forEach(function (btn) {
+          if (!btn) return;
+          btn.addEventListener("click", function () {
+            const g = btn.getAttribute("data-group");
+            if (g === "g1" || g === "g2") {
+              state.grupo = g;
+              saveState();
+              renderAll();
+            }
+          });
+        });
+
+        // Bottom tab navigation
+        const navPainel = document.getElementById("nav-btn-painel");
+        const navConteudo = document.getElementById("nav-btn-conteudo");
+        [navPainel, navConteudo].forEach(function (btn) {
+          if (!btn) return;
+          btn.addEventListener("click", function () {
+            const tab = btn.getAttribute("data-tab");
+            if (tab === "painel" || tab === "conteudo") {
+              state.aba = tab;
+              saveState();
+              renderAll();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          });
+        });
+
+        // Filter readings shortcut button
+        const btnFilterReadings = document.getElementById("btn-filter-readings");
+        if (btnFilterReadings) {
+          btnFilterReadings.addEventListener("click", function () {
+            state.aba = "conteudo";
+            state.filtro = "leituras";
+            state.busca = "";
+            const searchInput = document.getElementById("search-input");
+            if (searchInput) searchInput.value = "";
+            saveState();
+            renderAll();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+
+        // Settings accordion toggle
+        const btnToggleSettings = document.getElementById("btn-toggle-settings");
+        const settingsBody = document.getElementById("settings-panel-body");
+        if (btnToggleSettings && settingsBody) {
+          btnToggleSettings.addEventListener("click", function () {
+            state.settingsOpen = !state.settingsOpen;
+            btnToggleSettings.setAttribute(
+              "aria-expanded",
+              state.settingsOpen ? "true" : "false"
+            );
+            settingsBody.classList.toggle("open", state.settingsOpen);
+          });
+        }
+
+        // Backup Export / Import / Reset
+        const btnExport = document.getElementById("btn-export-json");
+        if (btnExport) {
+          btnExport.addEventListener("click", exportBackupJson);
+        }
+
+        const btnImportTrigger = document.getElementById("btn-import-trigger");
+        const inputImport = document.getElementById("input-import-json");
+        if (btnImportTrigger && inputImport) {
+          btnImportTrigger.addEventListener("click", function () {
+            inputImport.value = "";
+            inputImport.click();
+          });
+          inputImport.addEventListener("change", function (ev) {
+            const file = ev.target.files && ev.target.files[0];
+            if (file) handleImportFile(file);
+          });
+        }
+
+        const btnResetAll = document.getElementById("btn-reset-all");
+        if (btnResetAll) {
+          btnResetAll.addEventListener("click", resetAllProgress);
+        }
+
+        // Search input
+        const searchInput = document.getElementById("search-input");
+        const searchClearBtn = document.getElementById("search-clear-btn");
+        if (searchInput) {
+          searchInput.addEventListener("input", function () {
+            state.busca = searchInput.value;
+            renderAll();
+          });
+        }
+        if (searchClearBtn && searchInput) {
+          searchClearBtn.addEventListener("click", function () {
+            state.busca = "";
+            searchInput.value = "";
+            renderAll();
+            searchInput.focus();
+          });
+        }
+
+        // Filter chips
+        const chips = document.querySelectorAll(".filter-chip");
+        for (let c = 0; c < chips.length; c++) {
+          chips[c].addEventListener("click", function (ev) {
+            const f = ev.currentTarget.getAttribute("data-filter");
+            if (f) {
+              state.filtro = f;
+              renderAll();
+            }
+          });
+        }
+
+        // Expand / Collapse all
+        const btnExpandAll = document.getElementById("btn-expand-all");
+        const btnCollapseAll = document.getElementById("btn-collapse-all");
+        if (btnExpandAll) {
+          btnExpandAll.addEventListener("click", function () {
+            setAllAccordions(true);
+          });
+        }
+        if (btnCollapseAll) {
+          btnCollapseAll.addEventListener("click", function () {
+            setAllAccordions(false);
+          });
+        }
+
+        // Delegated clicks inside main
+        document.addEventListener("click", function (ev) {
+          const cycleBtn = ev.target.closest("[data-cycle-key]");
+          if (cycleBtn) {
+            const key = cycleBtn.getAttribute("data-cycle-key");
+            const current = getItemStatus(key);
+            const next = (current + 1) % 3;
+            if (next === 0) {
+              delete state.status[key];
+            } else {
+              state.status[key] = next;
+            }
+            saveState();
+            renderAll();
+            return;
+          }
+
+          const starBtn = ev.target.closest("[data-star-key]");
+          if (starBtn) {
+            const key = starBtn.getAttribute("data-star-key");
+            if (state.star[key]) {
+              delete state.star[key];
+            } else {
+              state.star[key] = true;
+            }
+            saveState();
+            renderAll();
+            return;
+          }
+
+          const accBtn = ev.target.closest("[data-acc-key]");
+          if (accBtn) {
+            const accKey = accBtn.getAttribute("data-acc-key");
+            const isCurrentlyExpanded =
+              accBtn.getAttribute("aria-expanded") === "true";
+            state.aberto[accKey] = !isCurrentlyExpanded;
+            saveState();
+            renderAll();
+            return;
+          }
+
+          const jumpBtn = ev.target.closest("[data-jump-area]");
+          if (jumpBtn) {
+            const areaId = jumpBtn.getAttribute("data-jump-area");
+            state.aba = "conteudo";
+            state.filtro = "todos";
+            state.busca = "";
+            const sInput = document.getElementById("search-input");
+            if (sInput) sInput.value = "";
+            state.aberto["area:" + areaId] = true;
+            const areaObj = DATA.areas.find(function (x) {
+              return x.id === areaId;
+            });
+            if (areaObj && areaObj.disciplinas.length > 0) {
+              state.aberto["disc:" + areaObj.disciplinas[0].id] = true;
+              if (areaObj.disciplinas[0].temas.length > 0) {
+                state.aberto["tema:" + areaObj.disciplinas[0].temas[0].id] = true;
+              }
+            }
+            saveState();
+            renderAll();
+            const targetSec = document.getElementById("sec-area-" + areaId);
+            if (targetSec) {
+              targetSec.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+            return;
+          }
+
+          const bulkDiscBtn = ev.target.closest("[data-bulk-disc]");
+          if (bulkDiscBtn) {
+            const dId = bulkDiscBtn.getAttribute("data-bulk-disc");
+            const dName = bulkDiscBtn.getAttribute("data-bulk-disc-name");
+            markDisciplineDominated(dId, dName);
+            return;
+          }
+
+          const resetFiltersBtn = ev.target.closest("#btn-reset-filters");
+          if (resetFiltersBtn) {
+            state.filtro = "todos";
+            state.busca = "";
+            const sInput = document.getElementById("search-input");
+            if (sInput) sInput.value = "";
+            renderAll();
+          }
+        });
+
+        window.addEventListener("resize", updateStickyOffset);
+        if (window.matchMedia) {
+          const mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) {
+            mq.addEventListener("change", applyTheme);
+          }
+        }
+      }
+
+      function init() {
+        const footerDate = document.getElementById("footer-gerado-em");
+        if (footerDate && DATA.meta && DATA.meta.gerado_em) {
+          footerDate.textContent = DATA.meta.gerado_em;
+        }
+        loadState();
+        bindEvents();
+        renderAll();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>
