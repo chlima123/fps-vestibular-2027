@@ -583,7 +583,7 @@
     }
 
     .area-jump-btn {
-      min-height: 36px;
+      min-height: 40px;
       padding: 6px 10px;
       border-radius: var(--radius-sm);
       background-color: var(--bg-surface);
@@ -1103,6 +1103,96 @@
       border-color: var(--accent-teal-border);
     }
 
+    li.checklist-item.stale {
+      border-left: 3px solid var(--accent-amber-border);
+      box-shadow: inset 3px 0 0 var(--accent-amber-border);
+    }
+
+    li.checklist-item.stale .status-badge,
+    .status-badge.stale {
+      background-color: var(--accent-amber-bg);
+      color: var(--accent-amber-text);
+      border-color: var(--accent-amber-border);
+    }
+
+    li.checklist-item.stale .stat-dot.dom {
+      background-color: var(--accent-amber);
+    }
+
+    .kpi-card-action {
+      width: 100%;
+      min-height: 44px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    /* Export Fallback Modal */
+    .export-fallback-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background-color: rgba(0, 0, 0, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      padding-left: max(12px, env(safe-area-inset-left));
+      padding-right: max(12px, env(safe-area-inset-right));
+    }
+
+    .export-fallback-overlay.open {
+      display: flex;
+    }
+
+    .export-fallback-panel {
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #export-json-text {
+      width: 100%;
+      min-height: 120px;
+      max-height: 40vh;
+      padding: 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      background-color: var(--bg-elevated);
+      color: var(--text-main);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 16px;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-y: auto;
+      resize: vertical;
+    }
+
+    #export-json-text:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .export-fallback-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    button.status-badge[data-cycle-key] {
+      min-height: 40px;
+      padding: 8px 10px;
+    }
+
     .star-btn {
       width: 46px;
       min-height: 48px;
@@ -1315,6 +1405,15 @@
           </div>
           <p class="kpi-note"><strong>Pondera pelo nº de questões de cada área</strong> no grupo ativo (Estudando = 50% do peso; Dominado = 100%).</p>
         </div>
+
+        <button type="button" class="kpi-card kpi-card-action" id="painel-stale" aria-label="Dominados há 21+ dias — revisar: 0 (nada vencido)">
+          <span class="kpi-card-label">Dominados há 21+ dias — revisar</span>
+          <div class="kpi-metric-box" id="painel-stale-box" style="margin-top: 2px;">
+            <div class="kpi-big-number" id="painel-stale-count">0</div>
+            <div class="kpi-sub-caption" id="painel-stale-caption">nada vencido</div>
+          </div>
+          <p class="kpi-note">Toque para filtrar itens vencidos no Conteúdo →</p>
+        </button>
       </div>
 
       <!-- Cards por Área -->
@@ -1405,6 +1504,9 @@
           <button type="button" class="filter-chip" data-filter="revisar" aria-pressed="false">
             <span>★ Revisar</span> <span class="chip-count" id="chip-cnt-revisar">0</span>
           </button>
+          <button type="button" class="filter-chip" data-filter="vencidos" aria-pressed="false">
+            <span>Revisar vencidos</span> <span class="chip-count" id="chip-cnt-vencidos">0</span>
+          </button>
           <button type="button" class="filter-chip" data-filter="leituras" aria-pressed="false">
             <span>Leituras obrigatórias</span> <span class="chip-count" id="chip-cnt-leituras">0</span>
           </button>
@@ -1439,6 +1541,21 @@
       </button>
     </div>
   </nav>
+
+  <div id="export-fallback" class="export-fallback-overlay" role="dialog" aria-modal="true" aria-labelledby="export-fallback-title" hidden>
+    <div class="export-fallback-panel">
+      <h2 class="section-title" id="export-fallback-title" style="margin: 0;">Backup JSON Exportado</h2>
+      <p class="kpi-note" style="margin: 0;">No iPhone, adicionado à tela de início, o download pode ser bloqueado. Copie o texto abaixo e guarde no app Notas — depois use Importar para restaurar.</p>
+      <label for="export-json-text" class="sr-only">Conteúdo JSON do backup</label>
+      <textarea readonly id="export-json-text"></textarea>
+      <div id="export-copy-feedback" class="feedback-msg" role="status" aria-live="polite"></div>
+      <div class="export-fallback-actions">
+        <button type="button" class="btn-secondary" id="btn-copy-export">Copiar</button>
+        <button type="button" class="btn-secondary" id="btn-select-export">Selecionar tudo</button>
+        <button type="button" class="btn-secondary" id="btn-close-export">Fechar</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     (function () {
@@ -2144,6 +2261,7 @@
 
       const STORAGE_KEY = "fps_vestibular_2027_v1";
       const STATUS_LABELS = ["Não estudado", "Estudando", "Dominado"];
+      const STALE_DAYS = 21;
 
       let storageAvailable = true;
       let state = {
@@ -2155,6 +2273,7 @@
         busca: "",
         status: {},
         star: {},
+        ts: {},
         aberto: {},
         settingsOpen: false
       };
@@ -2253,9 +2372,25 @@
         return map;
       }
 
+      function sanitizeTsMap(rawTs) {
+        const clean = {};
+        if (rawTs && typeof rawTs === "object") {
+          const keys = Object.keys(rawTs);
+          for (let i = 0; i < keys.length; i++) {
+            const k = keys[i];
+            const val = rawTs[k];
+            if (typeof val === "number" && isFinite(val) && val > 0) {
+              clean[k] = val;
+            }
+          }
+        }
+        return clean;
+      }
+
       function loadState() {
         const defaultAberto = buildDefaultAberto();
         state.aberto = defaultAberto;
+        state.ts = {};
         try {
           const testKey = "__fps_storage_test__";
           window.localStorage.setItem(testKey, "1");
@@ -2283,6 +2418,7 @@
               if (parsed.star && typeof parsed.star === "object") {
                 state.star = parsed.star;
               }
+              state.ts = sanitizeTsMap(parsed.ts);
               if (parsed.aberto && typeof parsed.aberto === "object") {
                 state.aberto = Object.assign({}, defaultAberto, parsed.aberto);
               }
@@ -2305,6 +2441,7 @@
             aba: state.aba,
             status: state.status,
             star: state.star,
+            ts: state.ts,
             aberto: state.aberto
           };
           window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
@@ -2324,6 +2461,18 @@
         return val === 1 || val === 2 ? val : 0;
       }
 
+      function getItemTs(key) {
+        if (!state.ts || typeof state.ts !== "object") return 0;
+        const val = state.ts[key];
+        return typeof val === "number" && isFinite(val) && val > 0 ? val : 0;
+      }
+
+      function isItemStale(status, ts, nowMs) {
+        if (status !== 2 || !ts) return false;
+        const refNow = typeof nowMs === "number" ? nowMs : Date.now();
+        return (refNow - ts) / 86400000 >= STALE_DAYS;
+      }
+
       function isItemStarred(key) {
         return Boolean(state.star[key]);
       }
@@ -2334,6 +2483,7 @@
 
       function getGroupStructure(grupo) {
         const areas = [];
+        const nowMs = Date.now();
         for (let a = 0; a < DATA.areas.length; a++) {
           const rawArea = DATA.areas[a];
           if (rawArea.somente_g2 && grupo !== "g2") continue;
@@ -2359,13 +2509,17 @@
               for (let i = 0; i < rawTema.itens.length; i++) {
                 const text = rawTema.itens[i];
                 const key = getItemKey(rawTema.id, i);
+                const status = getItemStatus(key);
+                const ts = getItemTs(key);
                 const itemObj = {
                   key: key,
                   temaId: rawTema.id,
                   index: i,
                   text: text,
                   normText: stripAccents(text),
-                  status: getItemStatus(key),
+                  status: status,
+                  ts: ts,
+                  stale: isItemStale(status, ts, nowMs),
                   starred: isItemStarred(key),
                   isReading: isMandatoryReading(text)
                 };
@@ -2410,17 +2564,25 @@
 
       function computeStats(items) {
         const total = items.length;
+        const nowMs = Date.now();
         let est = 0;
         let dom = 0;
         let rev = 0;
+        let vencidos = 0;
         let leiturasTotal = 0;
         let leiturasDom = 0;
         let leiturasEst = 0;
 
         for (let i = 0; i < total; i++) {
           const it = items[i];
+          const itTs = typeof it.ts === "number" ? it.ts : getItemTs(it.key);
           if (it.status >= 1) est++;
-          if (it.status === 2) dom++;
+          if (it.status === 2) {
+            dom++;
+            if (isItemStale(it.status, itTs, nowMs)) {
+              vencidos++;
+            }
+          }
           if (it.starred) rev++;
           if (it.isReading) {
             leiturasTotal++;
@@ -2440,6 +2602,7 @@
           estudado: est,
           dominado: dom,
           revisar: rev,
+          vencidos: vencidos,
           leiturasTotal: leiturasTotal,
           leiturasDom: leiturasDom,
           leiturasEst: leiturasEst,
@@ -2654,6 +2817,33 @@
             "Base: " + weighted.totalQuestoes + " questões no " + gInfo.nome;
         }
 
+        const staleCardEl = document.getElementById("painel-stale");
+        const staleBoxEl = document.getElementById("painel-stale-box");
+        const staleCountEl = document.getElementById("painel-stale-count");
+        const staleCaptionEl = document.getElementById("painel-stale-caption");
+        if (staleCountEl) {
+          staleCountEl.textContent = String(stats.vencidos);
+        }
+        if (staleCaptionEl) {
+          staleCaptionEl.textContent =
+            stats.vencidos === 0
+              ? "nada vencido"
+              : stats.vencidos === 1
+              ? "1 item vencido — revisar"
+              : stats.vencidos + " itens vencidos — revisar";
+        }
+        if (staleBoxEl) {
+          staleBoxEl.classList.toggle("est", stats.vencidos > 0);
+        }
+        if (staleCardEl) {
+          staleCardEl.setAttribute(
+            "aria-label",
+            "Dominados há 21+ dias — revisar: " +
+              stats.vencidos +
+              (stats.vencidos === 0 ? " (nada vencido)" : " vencidos")
+          );
+        }
+
         // Areas Grid
         const areasSummaryEl = document.getElementById("painel-areas-summary");
         if (areasSummaryEl) {
@@ -2802,6 +2992,12 @@
         if (filtro === "estudando" && item.status !== 1) return false;
         if (filtro === "dominados" && item.status !== 2) return false;
         if (filtro === "revisar" && !item.starred) return false;
+        if (filtro === "vencidos") {
+          const ts = typeof item.ts === "number" ? item.ts : getItemTs(item.key);
+          if (!(item.status === 2 && ts && (Date.now() - ts) / 86400000 >= STALE_DAYS)) {
+            return false;
+          }
+        }
         if (filtro === "leituras" && !item.isReading) return false;
 
         if (normQuery) {
@@ -2820,6 +3016,7 @@
           estudando: stats.apenasEstudando,
           dominados: stats.dominado,
           revisar: stats.revisar,
+          vencidos: stats.vencidos,
           leituras: stats.leiturasTotal
         };
 
@@ -2874,7 +3071,26 @@
                 areaMatchedItems++;
                 matchedCount++;
 
-                const stLabel = STATUS_LABELS[item.status];
+                const nowMs = Date.now();
+                const itemTs = typeof item.ts === "number" ? item.ts : getItemTs(item.key);
+                let stLabel = STATUS_LABELS[item.status];
+                let ageAriaSuffix = "";
+                let isStale = false;
+                if (item.status === 2 && itemTs > 0) {
+                  const elapsedDays = (nowMs - itemTs) / 86400000;
+                  const ageDays = Math.max(0, Math.floor(elapsedDays));
+                  if (elapsedDays >= STALE_DAYS) {
+                    isStale = true;
+                    stLabel = "Dominado · revisar (" + ageDays + "d)";
+                    ageAriaSuffix = " (há " + ageDays + "d, revisar)";
+                  } else if (ageDays === 0) {
+                    stLabel = "Dominado · hoje";
+                    ageAriaSuffix = " (hoje)";
+                  } else {
+                    stLabel = "Dominado · há " + ageDays + "d";
+                    ageAriaSuffix = " (há " + ageDays + "d)";
+                  }
+                }
                 const dotHtml =
                   item.status === 2
                     ? '<span class="stat-dot dom"></span>'
@@ -2883,7 +3099,9 @@
                     : "";
 
                 itemsHtml +=
-                  '<li class="checklist-item" data-status="' +
+                  '<li class="checklist-item' +
+                  (isStale ? " stale" : "") +
+                  '" data-status="' +
                   item.status +
                   '">' +
                   '<button type="button" class="item-status-btn" data-cycle-key="' +
@@ -2892,11 +3110,14 @@
                   escapeHtml(item.text) +
                   " — Status atual: " +
                   stLabel +
+                  ageAriaSuffix +
                   '. Toque para alternar.">' +
                   '<span class="item-text">' +
                   highlightMatch(item.text, rawQuery) +
                   "</span>" +
-                  '<span class="status-badge">' +
+                  '<span class="status-badge' +
+                  (isStale ? " stale" : "") +
+                  '">' +
                   dotHtml +
                   stLabel +
                   "</span>" +
@@ -3151,6 +3372,71 @@
         }, 4000);
       }
 
+      function showExportCopyFeedback(message) {
+        const el = document.getElementById("export-copy-feedback");
+        if (!el) return;
+        el.textContent = message;
+        el.classList.add("visible");
+      }
+
+      function openExportFallback(jsonText) {
+        const overlay = document.getElementById("export-fallback");
+        const textarea = document.getElementById("export-json-text");
+        const feedback = document.getElementById("export-copy-feedback");
+        if (feedback) {
+          feedback.textContent = "";
+          feedback.classList.remove("visible");
+        }
+        if (textarea) {
+          textarea.value = jsonText;
+        }
+        if (overlay) {
+          overlay.removeAttribute("hidden");
+          overlay.classList.add("open");
+        }
+        if (textarea) {
+          textarea.focus();
+          textarea.select();
+        }
+      }
+
+      function closeExportFallback() {
+        const overlay = document.getElementById("export-fallback");
+        if (overlay) {
+          overlay.classList.remove("open");
+          overlay.setAttribute("hidden", "");
+        }
+      }
+
+      function copyExportJson() {
+        const textarea = document.getElementById("export-json-text");
+        if (!textarea) return;
+        const text = textarea.value;
+        function onSuccess() {
+          showExportCopyFeedback("JSON copiado para a área de transferência!");
+          showSettingsFeedback("JSON copiado para a área de transferência!");
+        }
+        function fallbackExecCopy() {
+          try {
+            textarea.focus();
+            textarea.select();
+            textarea.setSelectionRange(0, text.length);
+            document.execCommand("copy");
+            onSuccess();
+          } catch (err) {
+            showExportCopyFeedback("Selecione o texto abaixo e copie manualmente.");
+          }
+        }
+        if (
+          navigator.clipboard &&
+          typeof navigator.clipboard.writeText === "function"
+        ) {
+          navigator.clipboard.writeText(text).then(onSuccess, fallbackExecCopy);
+        } else {
+          fallbackExecCopy();
+        }
+      }
+
       function exportBackupJson() {
         const now = new Date();
         const yyyy = now.getFullYear();
@@ -3165,21 +3451,30 @@
           tema: state.tema,
           status: state.status,
           star: state.star,
+          ts: state.ts,
           aberto: state.aberto
         };
 
-        const blob = new Blob([JSON.stringify(payload, null, 2)], {
-          type: "application/json;charset=utf-8"
-        });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
+        const jsonStr = JSON.stringify(payload, null, 2);
+
+        try {
+          const blob = new Blob([jsonStr], {
+            type: "application/json;charset=utf-8"
+          });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        } catch (err) {
+          /* fallback modal always shown below */
+        }
+
         showSettingsFeedback("Backup exportado: " + filename);
+        openExportFallback(jsonStr);
       }
 
       function handleImportFile(file) {
@@ -3222,6 +3517,7 @@
             state.status = parsed.status || {};
             state.star =
               parsed.star && typeof parsed.star === "object" ? parsed.star : {};
+            state.ts = sanitizeTsMap(parsed.ts);
             if (parsed.grupo === "g1" || parsed.grupo === "g2") {
               state.grupo = parsed.grupo;
             }
@@ -3267,8 +3563,11 @@
         );
         if (!ok) return;
 
+        const nowMs = Date.now();
         for (let i = 0; i < targetDisc.allItems.length; i++) {
-          state.status[targetDisc.allItems[i].key] = 2;
+          const itemKey = targetDisc.allItems[i].key;
+          state.status[itemKey] = 2;
+          state.ts[itemKey] = nowMs;
         }
         saveState();
         renderAll();
@@ -3290,6 +3589,7 @@
 
         state.status = {};
         state.star = {};
+        state.ts = {};
         saveState();
         renderAll();
         showSettingsFeedback("Todo o progresso foi zerado.");
@@ -3370,6 +3670,63 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
           });
         }
+
+        // Painel stale KPI card shortcut
+        const painelStaleBtn = document.getElementById("painel-stale");
+        if (painelStaleBtn) {
+          painelStaleBtn.addEventListener("click", function () {
+            state.aba = "conteudo";
+            state.filtro = "vencidos";
+            state.busca = "";
+            const searchInput = document.getElementById("search-input");
+            if (searchInput) searchInput.value = "";
+            saveState();
+            renderAll();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+
+        // Export fallback modal actions
+        const btnCopyExport = document.getElementById("btn-copy-export");
+        if (btnCopyExport) {
+          btnCopyExport.addEventListener("click", copyExportJson);
+        }
+
+        const btnSelectExport = document.getElementById("btn-select-export");
+        if (btnSelectExport) {
+          btnSelectExport.addEventListener("click", function () {
+            const textarea = document.getElementById("export-json-text");
+            if (textarea) {
+              textarea.focus();
+              textarea.select();
+              textarea.setSelectionRange(0, textarea.value.length);
+              showExportCopyFeedback("Texto selecionado.");
+            }
+          });
+        }
+
+        const btnCloseExport = document.getElementById("btn-close-export");
+        if (btnCloseExport) {
+          btnCloseExport.addEventListener("click", closeExportFallback);
+        }
+
+        const exportFallbackOverlay = document.getElementById("export-fallback");
+        if (exportFallbackOverlay) {
+          exportFallbackOverlay.addEventListener("click", function (ev) {
+            if (ev.target === exportFallbackOverlay) {
+              closeExportFallback();
+            }
+          });
+        }
+
+        document.addEventListener("keydown", function (ev) {
+          if (ev.key === "Escape") {
+            const overlay = document.getElementById("export-fallback");
+            if (overlay && overlay.classList.contains("open")) {
+              closeExportFallback();
+            }
+          }
+        });
 
         // Settings accordion toggle
         const btnToggleSettings = document.getElementById("btn-toggle-settings");
@@ -3465,6 +3822,7 @@
             } else {
               state.status[key] = next;
             }
+            state.ts[key] = Date.now();
             saveState();
             renderAll();
             return;

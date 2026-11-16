@@ -1,7 +1,7 @@
 /* Service worker — Cobertura FPS 2027.1
    Estratégia: precache do app shell; navegação network-first com fallback de cache
    (abre offline); demais assets cache-first. Versionar CACHE a cada publicação. */
-const CACHE = "fps-cobertura-v3-2026-11-16";
+const CACHE = "fps-cobertura-v4-2026-11-16";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./icon-180.png"];
 
 self.addEventListener("install", (event) => {
